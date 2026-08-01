@@ -1,8 +1,5 @@
 # 🛡️ CyberSage 2.0 — AI-Based Autonomous Attack Detector and Resolver
 
-> Built from scratch | VTU Major Project BIC685 | Bangalore Institute of Technology
-
----
 
 ## What CyberSage 2.0 Does
 
