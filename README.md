@@ -1,7 +1,7 @@
-# 🛡️ CyberSage 2.0 — AI-Based Autonomous Attack Detector and Resolver
+# 🛡️ CyberSage — AI-Based Autonomous Attack Detector and Resolver
 
 
-## What CyberSage 2.0 Does
+## What CyberSage Does
 
 ```
 1. Reads ALL live Windows Security Event Logs in real time
