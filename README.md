@@ -61,14 +61,11 @@ CyberSage2/
 │   └── attack_classifier.py    ← Maps live logs to attack patterns
 ├── explainer/
 │   └── llm_engine.py           ← Groq LLaMA (explanation only)
-├── remediation/
-│   └── auto_fix.py             ← OS-level auto-remediation
+
 ├── dashboard/
 │   ├── app.py                  ← Flask + SocketIO backend
 │   └── templates/index.html    ← Live log dashboard (attacks in RED)
-├── kali_scripts/
-│   ├── 01_brute_force.sh       ← Kali attack script
-│   └── brute_force_sim.py      ← Python brute force simulator
+
 ├── cybersage_agent.py          ← System tray agent
 ├── main.py                     ← Main pipeline
 ├── requirements.txt
@@ -110,20 +107,6 @@ http://localhost:5000
 
 ---
 
-## Test with Kali Linux
-
-From Kali VM:
-```bash
-python3 ~/brute_force_sim.py
-```
-
-Within 30 seconds on Windows:
-- Popup alert appears
-- Dashboard shows attack logs in RED
-- Remediation executes automatically
-- Forensic evidence saved to `dataset/forensic/`
-
----
 
 ## Remediation Sources
 
@@ -134,18 +117,3 @@ Every remediation step in `detector/mitre_engine.py` is sourced from:
 - Microsoft Security Documentation — https://learn.microsoft.com/en-us/security
 - NSA Cybersecurity Technical Reports — https://media.defense.gov
 
----
-
-## How to Answer HOD Questions
-
-**Q: How do you test it?**
-> We simulate real attacks using Kali Linux in an isolated VirtualBox lab environment. Kali generates actual Windows Event Logs which CyberSage reads in real time.
-
-**Q: How do you know the remediation is correct?**
-> Every remediation step is sourced from MITRE ATT&CK official mitigations, NIST SP 800-61 incident response guide, and CISA advisories — the same standards used by enterprise security teams. Sources are cited per attack in `detector/mitre_engine.py`.
-
-**Q: Is it really AI?**
-> Yes. Groq LLaMA 3.3 (70B parameter model) explains attacks in plain English. Detection uses an expert system AI (rule-based pattern matching). Together they form a hybrid AI system.
-
-**Q: What makes it original?**
-> We built our own detection rules, our own MITRE mappings, our own remediation playbooks, and our own attack dataset from real Kali tests. No existing tool was copied.
