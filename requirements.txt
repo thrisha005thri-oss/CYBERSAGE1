@@ -1,0 +1,10 @@
+flask
+flask-socketio
+flask-cors
+pywin32
+pandas
+colorama
+requests
+python-dotenv
+pystray
+pillow

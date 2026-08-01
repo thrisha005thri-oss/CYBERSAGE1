@@ -1,0 +1,706 @@
+{
+  "attack": "NEW_ADMIN_USER",
+  "captured": "20260722_140630",
+  "logs": [
+    {
+      "event_id": 4672,
+      "time": "Wed Jul 22 14:06:12 2026",
+      "event_label": "Special Privileges Assigned",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4624,
+      "time": "Wed Jul 22 14:06:12 2026",
+      "event_label": "Successful Login",
+      "source_ip": "None",
+      "account": "SYSTEM"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:57 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:49 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:49 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:49 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:49 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:49 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:49 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:49 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:05:49 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:04:07 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:04:07 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:04:07 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:04:07 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:04:07 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:04:07 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:04:07 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:04:07 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4672,
+      "time": "Wed Jul 22 14:03:54 2026",
+      "event_label": "Special Privileges Assigned",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4624,
+      "time": "Wed Jul 22 14:03:54 2026",
+      "event_label": "Successful Login",
+      "source_ip": "None",
+      "account": "SYSTEM"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:50 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:50 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:50 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:50 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:50 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:50 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:50 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:50 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4672,
+      "time": "Wed Jul 22 14:02:38 2026",
+      "event_label": "Special Privileges Assigned",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4624,
+      "time": "Wed Jul 22 14:02:38 2026",
+      "event_label": "Successful Login",
+      "source_ip": "None",
+      "account": "SYSTEM"
+    },
+    {
+      "event_id": 4672,
+      "time": "Wed Jul 22 14:02:35 2026",
+      "event_label": "Special Privileges Assigned",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4624,
+      "time": "Wed Jul 22 14:02:35 2026",
+      "event_label": "Successful Login",
+      "source_ip": "None",
+      "account": "SYSTEM"
+    },
+    {
+      "event_id": 4672,
+      "time": "Wed Jul 22 14:02:35 2026",
+      "event_label": "Special Privileges Assigned",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4624,
+      "time": "Wed Jul 22 14:02:35 2026",
+      "event_label": "Successful Login",
+      "source_ip": "None",
+      "account": "SYSTEM"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:31 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:31 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:31 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:31 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:31 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:31 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:31 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:02:31 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:00:43 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:00:43 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:00:43 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:00:43 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:00:43 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:00:43 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:00:43 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 14:00:43 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4672,
+      "time": "Wed Jul 22 14:00:16 2026",
+      "event_label": "Special Privileges Assigned",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4624,
+      "time": "Wed Jul 22 14:00:16 2026",
+      "event_label": "Successful Login",
+      "source_ip": "None",
+      "account": "SYSTEM"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:59:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:59:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:59:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:59:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:59:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:59:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:59:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:59:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:57:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:57:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:57:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:57:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:57:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:57:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:57:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:57:04 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4799,
+      "time": "Wed Jul 22 13:56:18 2026",
+      "event_label": "Security Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4726,
+      "time": "Wed Jul 22 13:56:08 2026",
+      "event_label": "User Account Deleted",
+      "source_ip": "None",
+      "account": "T1136.001_Admin"
+    },
+    {
+      "event_id": 4729,
+      "time": "Wed Jul 22 13:56:08 2026",
+      "event_label": "Event 4729",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4733,
+      "time": "Wed Jul 22 13:56:08 2026",
+      "event_label": "Event 4733",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:56:08 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4726,
+      "time": "Wed Jul 22 13:56:07 2026",
+      "event_label": "User Account Deleted",
+      "source_ip": "None",
+      "account": "T1136.001_PowerShell"
+    },
+    {
+      "event_id": 4729,
+      "time": "Wed Jul 22 13:56:07 2026",
+      "event_label": "Event 4729",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4726,
+      "time": "Wed Jul 22 13:56:07 2026",
+      "event_label": "User Account Deleted",
+      "source_ip": "None",
+      "account": "T1136.001_CMD"
+    },
+    {
+      "event_id": 4729,
+      "time": "Wed Jul 22 13:56:07 2026",
+      "event_label": "Event 4729",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4733,
+      "time": "Wed Jul 22 13:56:07 2026",
+      "event_label": "Event 4733",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:56:07 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4799,
+      "time": "Wed Jul 22 13:55:48 2026",
+      "event_label": "Security Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5061,
+      "time": "Wed Jul 22 13:55:18 2026",
+      "event_label": "Event 5061",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5058,
+      "time": "Wed Jul 22 13:55:18 2026",
+      "event_label": "Event 5058",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:55:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Wed Jul 22 13:55:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    }
+  ]
+}

@@ -1,0 +1,706 @@
+{
+  "attack": "NEW_ADMIN_USER",
+  "captured": "20260719_215046",
+  "logs": [
+    {
+      "event_id": 4672,
+      "time": "Sun Jul 19 21:50:40 2026",
+      "event_label": "Special Privileges Assigned",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4624,
+      "time": "Sun Jul 19 21:50:40 2026",
+      "event_label": "Successful Login",
+      "source_ip": "None",
+      "account": "SYSTEM"
+    },
+    {
+      "event_id": 4672,
+      "time": "Sun Jul 19 21:50:37 2026",
+      "event_label": "Special Privileges Assigned",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4624,
+      "time": "Sun Jul 19 21:50:37 2026",
+      "event_label": "Successful Login",
+      "source_ip": "None",
+      "account": "SYSTEM"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Jul 19 21:50:01 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Jul 19 21:50:01 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Jul 19 21:50:01 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Jul 19 21:50:01 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Jul 19 21:50:01 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Jul 19 21:50:01 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Jul 19 21:50:01 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Jul 19 21:50:01 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:53 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:48 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:48 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:48 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:47 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:47 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:47 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:47 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:47 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:47 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:47 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:47 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:42 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:36 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:31 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:30 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5379,
+      "time": "Sun Jul 19 21:48:29 2026",
+      "event_label": "Credential Manager Read",
+      "source_ip": "None",
+      "account": "nan"
+    }
+  ]
+}
