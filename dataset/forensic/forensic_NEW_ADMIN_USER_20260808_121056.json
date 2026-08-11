@@ -1,0 +1,706 @@
+{
+  "attack": "NEW_ADMIN_USER",
+  "captured": "20260808_121056",
+  "logs": [
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:53 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:53 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:53 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:52 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5152,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5152,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5152,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:51 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:50 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:50 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:49 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:49 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:48 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:48 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:48 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:47 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:46 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:46 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:46 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:46 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:46 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:46 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:46 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:45 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:45 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:44 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:44 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:43 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:43 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:43 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:42 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:41 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:41 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:41 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:41 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:41 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:41 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:41 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:40 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:40 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4658,
+      "time": "Sat Aug  8 12:10:39 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:39 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4658,
+      "time": "Sat Aug  8 12:10:39 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4690,
+      "time": "Sat Aug  8 12:10:39 2026",
+      "event_label": "Event 4690",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:39 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:39 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:38 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:38 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:38 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:37 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:37 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Sat Aug  8 12:10:37 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:37 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sat Aug  8 12:10:37 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sat Aug  8 12:10:37 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sat Aug  8 12:10:37 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    }
+  ]
+}

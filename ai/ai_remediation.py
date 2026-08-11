@@ -1,115 +1,164 @@
+import time
+import concurrent.futures
+from datetime import datetime
 from colorama import Fore, Style, init
-from ai.rl_remediation  import get_ai
-from ai.action_executor import execute_action
 init(autoreset=True)
 
+from ai.rl_remediation  import get_ai
+from ai.action_executor import execute_action, get_all_actions
+
 # ═══════════════════════════════════════════════════════════════
-# CyberSage 2.0 — AI Remediation Pipeline
+# CyberSage — AI Remediation Pipeline
+# Connects RL AI decisions to deep OS actions
 #
-# This is the entry point called by main.py.
-# Steps:
-#   1. RL AI decides which actions to take
-#   2. Execute each action via action_executor
-#   3. Calculate outcome (how many succeeded)
-#   4. RL AI learns from the outcome
-#   5. Return full report for dashboard
+# FIXES APPLIED:
+# 1. Per-action timeout (15s) — prevents any single action (e.g.
+#    a heavy scan) from hanging the whole pipeline.
+# 2. Remediation cooldown — prevents the self-reinforcing loop
+#    where remediation actions (which shell out to PowerShell)
+#    generate new Event 4688 entries, which get re-detected as a
+#    fresh FILELESS_MALWARE attack, triggering more remediation,
+#    forever. Detection + alerting still happen every scan; actual
+#    remediation EXECUTION for a given attack pattern only runs
+#    once per cooldown window.
 # ═══════════════════════════════════════════════════════════════
 
+ACTION_TIMEOUT_SECONDS = 15   # max time any single action gets to complete
+REMEDIATION_COOLDOWN_SECONDS = 180  # don't re-remediate the same pattern within 3 min
 
-def ai_remediate(attack_info, df, user_feedback=None):
+# In-memory record of when each attack pattern was last remediated.
+# Resets when the process restarts — intentional, so a fresh
+# CyberSage run always remediates on first detection.
+_last_remediated = {}
+
+
+def _in_cooldown(pattern):
+    last = _last_remediated.get(pattern)
+    if last is None:
+        return False
+    return (datetime.now() - last).total_seconds() < REMEDIATION_COOLDOWN_SECONDS
+
+
+def _execute_with_timeout(action, context, df, timeout=ACTION_TIMEOUT_SECONDS):
     """
-    Full AI-based remediation for one detected attack.
-
-    attack_info : dict from attack_classifier (pattern, risk, attacker_ip, etc.)
-    df          : raw log DataFrame (for forensic evidence)
-    user_feedback: float -1.0 to +1.0 from dashboard Correct/Wrong buttons
-
-    Returns dict with all results for dashboard display.
+    Runs execute_action() in a worker thread with a hard timeout.
+    If the action doesn't finish in time, it's marked as failed/timed-out
+    instead of freezing the whole remediation pipeline.
     """
-    pattern = attack_info.get("pattern", "UNKNOWN")
-    risk    = attack_info.get("risk", 0)
-    name    = attack_info.get("name", pattern)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        future = executor.submit(execute_action, action, context, df)
+        try:
+            return future.result(timeout=timeout)
+        except concurrent.futures.TimeoutError:
+            return {
+                "success": False,
+                "message": f"Action timed out after {timeout}s — skipped to avoid hanging pipeline"
+            }
+        except Exception as e:
+            return {"success": False, "message": str(e)}
 
-    print(f"\n{Fore.CYAN}{'═'*58}")
-    print(f"  🤖 AI Remediation Engine — {name}")
-    print(f"  Risk: {risk}/100  |  MITRE: {attack_info.get('mitre_id','')}")
-    print(f"{'═'*58}{Style.RESET_ALL}")
 
-    ai = get_ai()
+def ai_remediate(attack, df=None):
+    rl      = get_ai()
+    pattern = attack.get("pattern", "UNKNOWN")
+    risk    = attack.get("risk", 0)
 
-    # ── Step 1: RL AI decides actions ─────────────────────────
-    decision = ai.decide(pattern)
+    print(f"\n{Fore.CYAN}{'─'*56}")
+    print(f"  🤖 CyberSage AI Remediation")
+    print(f"{'─'*56}{Style.RESET_ALL}")
+    print(f"  Attack  : {Fore.RED}{pattern}{Style.RESET_ALL}")
+    print(f"  Risk    : {risk}/100")
+
+    # ── Cooldown check ──────────────────────────────────────────
+    # Detection/alerting already happened before this function was
+    # called (see attack_classifier + agent alert logic). This gate
+    # only controls whether we ACT again, to stop remediation from
+    # generating new events that re-trigger detection in a loop.
+    if _in_cooldown(pattern):
+        remaining = REMEDIATION_COOLDOWN_SECONDS - (
+            datetime.now() - _last_remediated[pattern]
+        ).total_seconds()
+        print(f"  {Fore.YELLOW}⏳ Remediation cooldown active for {pattern} "
+              f"({remaining:.0f}s remaining) — already remediated recently, "
+              f"skipping repeat action execution.{Style.RESET_ALL}")
+        return {
+            "ai_mode"       : "COOLDOWN",
+            "confidence"    : 0,
+            "actions_chosen": [],
+            "actions_done"  : [],
+            "outcome"       : "skipped_cooldown",
+            "rl_experience" : rl.experience,
+            "explore_rate"  : rl.explore_rate,
+            "q_snapshot"    : {},
+        }
+
+    # RL AI decides actions
+    decision = rl.decide(pattern)
     actions  = decision["actions"]
+    mode     = decision["mode"]
+    conf     = decision["confidence"]
 
-    # Build execution context
+    print(f"  Mode    : {Fore.CYAN}{mode}{Style.RESET_ALL}")
+    print(f"  Confidence: {conf}%")
+    print(f"  Actions : {len(actions)} planned\n")
+
+    # Build context for action executor
     context = {
         "attack_type"   : pattern,
-        "attacker_ip"   : attack_info.get("attacker_ip"),
-        "target_account": attack_info.get("target_account"),
-        "process_name"  : attack_info.get("process_name"),
+        "attacker_ip"   : attack.get("attacker_ip"),
+        "target_account": attack.get("target_account"),
+        "process_name"  : attack.get("process_name"),
         "risk"          : risk,
+        "pattern"       : pattern,
     }
 
-    # ── Step 2: Execute each action ───────────────────────────
-    print(f"\n{Fore.YELLOW}  ⚡ Executing {len(actions)} AI-chosen actions:{Style.RESET_ALL}")
-
+    # Execute each action — with timeout protection
     results      = []
     actions_done = []
 
     for action in actions:
-        print(f"\n  → {action}")
-        result = execute_action(action, context, df)
-        results.append(result)
-        color  = Fore.GREEN if result["success"] else Fore.RED
-        symbol = "✅" if result["success"] else "❌"
-        print(f"    {color}{symbol} {result['message']}{Style.RESET_ALL}")
-        if result["success"]:
-            actions_done.append(result["message"])
+        print(f"\n  ▶ Executing: {action}")
+        try:
+            result  = _execute_with_timeout(action, context, df)
+            success = result.get("success", False)
+            msg     = result.get("message", "")
+            results.append({"action": action, "success": success, "message": msg})
+            if success:
+                actions_done.append(msg)
+            else:
+                print(f"  {Fore.YELLOW}⚠️  {msg}{Style.RESET_ALL}")
+        except Exception as e:
+            print(f"  {Fore.RED}❌ Error: {e}{Style.RESET_ALL}")
+            results.append({"action": action, "success": False, "message": str(e)})
 
-    # ── Step 3: Calculate outcome ──────────────────────────────
+    # Calculate outcome
     n_ok    = sum(1 for r in results if r["success"])
     n_total = len(results)
 
     if n_ok == n_total:
         outcome = "success"
-        outcome_color = Fore.GREEN
     elif n_ok > 0:
         outcome = "partial"
-        outcome_color = Fore.YELLOW
     else:
         outcome = "failed"
-        outcome_color = Fore.RED
 
     print(f"\n  {Fore.CYAN}{'─'*56}{Style.RESET_ALL}")
-    print(f"  Outcome : {outcome_color}{outcome.upper()}{Style.RESET_ALL} "
-          f"({n_ok}/{n_total} actions succeeded)")
+    print(f"  ✅ Actions succeeded: {n_ok}/{n_total}")
+    print(f"  Outcome: {Fore.GREEN if outcome=='success' else Fore.YELLOW}{outcome}{Style.RESET_ALL}")
 
-    # ── Step 4: RL AI learns ───────────────────────────────────
-    ai.learn(pattern, actions, outcome, user_feedback)
+    # Mark this pattern as remediated now, starting the cooldown
+    _last_remediated[pattern] = datetime.now()
 
-    # ── Step 5: Build report ───────────────────────────────────
-    report = {
-        "pattern"        : pattern,
-        "name"           : name,
-        "outcome"        : outcome,
-        "ai_mode"        : decision["mode"],
-        "confidence"     : decision["confidence"],
-        "actions_chosen" : actions,
-        "actions_done"   : actions_done,
-        "results"        : results,
-        "n_ok"           : n_ok,
-        "n_total"        : n_total,
-        "rl_experience"  : ai.experience,
-        "explore_rate"   : round(ai.explore_rate, 3),
-        "q_snapshot"     : decision["q_snapshot"],
+    # RL learns from outcome
+    rl.learn(pattern, actions, outcome)
+
+    return {
+        "ai_mode"       : mode,
+        "confidence"    : conf,
+        "actions_chosen": actions,
+        "actions_done"  : actions_done,
+        "outcome"       : outcome,
+        "rl_experience" : rl.experience,
+        "explore_rate"  : rl.explore_rate,
+        "q_snapshot"    : decision["q_snapshot"],
     }
-
-    print(f"\n  {Fore.CYAN}AI Summary:")
-    print(f"    Mode       : {decision['mode']}")
-    print(f"    Confidence : {decision['confidence']:.0f}%")
-    print(f"    Experience : {ai.experience} total episodes")
-    print(f"    Explore    : {ai.explore_rate:.2f} "
-          f"({'still learning' if ai.explore_rate > 0.15 else 'mostly exploiting'})")
-    print(f"{'═'*58}{Style.RESET_ALL}\n")
-
-    return report

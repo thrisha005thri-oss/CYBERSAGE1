@@ -2,878 +2,708 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CyberSage 2.0 — Security Dashboard</title>
+<title>CyberSage -- Security Dashboard</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
 <style>
-/* ── Reset ── */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',sans-serif;background:#0d0d1a;
-     color:#c9d1e0;height:100vh;display:flex;flex-direction:column;overflow:hidden}
-
-/* ── Top Bar ── */
-.topbar{background:#111122;border-bottom:2px solid #1e1e3a;
-  padding:10px 20px;display:flex;align-items:center;
-  justify-content:space-between;flex-shrink:0}
-.brand{font-size:17px;font-weight:700}
+body{font-family:'Segoe UI',sans-serif;background:#0d0d1a;color:#c9d1e0;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.topbar{background:#111122;border-bottom:2px solid #1e1e3a;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.brand{font-size:24px;font-weight:700}
 .brand .cs{color:#5bc8f5}
-.brand .ver{font-size:11px;color:#444;margin-left:6px}
-.topright{display:flex;align-items:center;gap:14px;font-size:12px}
-.lastscan{color:#555}
-.pill{padding:3px 14px;border-radius:20px;font-size:11px;font-weight:700}
-.pill-ok  {background:#0a2a0a;color:#4caf50;border:1px solid #4caf50}
-.pill-atk {background:#2a0a0a;color:#f44336;border:1px solid #f44336;animation:blink .6s infinite}
+.brand .sub{font-size:14px;color:#8890a8;margin-left:8px}
+.topright{display:flex;align-items:center;gap:14px;font-size:14px}
+.lastscan{color:#9aa2c0}
+.pill{padding:5px 16px;border-radius:20px;font-size:13px;font-weight:700}
+.pill-ok{background:#0a2a0a;color:#4caf50;border:1px solid #4caf50}
+.pill-atk{background:#2a0a0a;color:#f44336;border:1px solid #f44336;animation:blink .6s infinite}
 .pill-scan{background:#2a200a;color:#ff9800;border:1px solid #ff9800}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
-
-/* ── Stats ── */
-.stats{display:flex;gap:1px;background:#1e1e3a;
-  border-bottom:1px solid #1e1e3a;flex-shrink:0}
-.stat{flex:1;background:#111122;padding:8px 10px;text-align:center}
-.stat .v{font-size:20px;font-weight:700}
-.v.w{color:#c9d1e0}.v.r{color:#f44336}.v.o{color:#ff9800}
-.v.g{color:#4caf50}.v.b{color:#5bc8f5}.v.m{color:#ce93d8}
-.stat .l{font-size:9px;color:#444;text-transform:uppercase;
-  letter-spacing:1px;margin-top:2px}
-
-/* ── Main layout ── */
+.stats{display:flex;gap:1px;background:#1e1e3a;border-bottom:1px solid #1e1e3a;flex-shrink:0}
+.stat{flex:1;background:#111122;padding:14px 10px;text-align:center}
+.stat .v{font-size:30px;font-weight:700}
+.v-w{color:#c9d1e0}.v-r{color:#f44336}.v-o{color:#ff9800}
+.v-g{color:#4caf50}.v-b{color:#5bc8f5}.v-m{color:#ce93d8}
+.stat .l{font-size:11px;color:#a8b0cc;text-transform:uppercase;letter-spacing:1px;margin-top:4px;font-weight:600}
 .main{display:flex;flex:1;overflow:hidden;gap:1px;background:#1e1e3a}
-
-/* ── Left: Log table ── */
-.left{flex:3;display:flex;flex-direction:column;
-  background:#0d0d1a;overflow:hidden;min-width:0}
-
-.toolbar{background:#111122;padding:7px 14px;
-  display:flex;gap:8px;align-items:center;
-  border-bottom:1px solid #1e1e3a;flex-shrink:0}
-.toolbar .lbl{font-size:10px;font-weight:700;color:#444;
-  letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
-.toolbar input{flex:1;background:#1e1e3a;border:1px solid #2a2a4a;
-  border-radius:4px;padding:4px 10px;color:#c9d1e0;font-size:12px}
+.left{flex:3;display:flex;flex-direction:column;background:#0d0d1a;overflow:hidden;min-width:0}
+.toolbar{background:#111122;padding:9px 14px;display:flex;gap:8px;align-items:center;border-bottom:1px solid #1e1e3a;flex-shrink:0}
+.toolbar .lbl{font-size:12px;font-weight:700;color:#a8b0cc;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.toolbar input{flex:1;background:#1e1e3a;border:1px solid #2a2a4a;border-radius:4px;padding:6px 12px;color:#c9d1e0;font-size:13px}
 .toolbar input:focus{outline:none;border-color:#5bc8f5}
-.btn{padding:4px 12px;border:none;border-radius:4px;
-  font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap}
+.btn{padding:6px 16px;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
 .btn-blue{background:#5bc8f5;color:#0d0d1a}
 .btn-gray{background:#2a2a4a;color:#c9d1e0}
-
 .logwrap{flex:1;overflow-y:auto}
 .logwrap::-webkit-scrollbar{width:5px}
 .logwrap::-webkit-scrollbar-thumb{background:#2a2a4a}
-table{width:100%;border-collapse:collapse;
-  font-size:12px;font-family:'Consolas',monospace}
-thead th{background:#0a0a16;padding:6px 10px;text-align:left;
-  font-size:10px;color:#444;text-transform:uppercase;
-  letter-spacing:1px;position:sticky;top:0;
-  border-bottom:1px solid #1e1e3a;z-index:1}
-tbody tr{border-bottom:1px solid #0a0a16;cursor:pointer}
-tbody tr.normal{background:#0d0d1a;color:#555}
-tbody tr.normal:hover{background:#131323}
-tbody tr.attack{background:rgba(244,67,54,.08);
-  color:#ff6b6b;border-left:3px solid #f44336}
-tbody tr.attack:hover{background:rgba(244,67,54,.15)}
-tbody tr.sel{background:#1a2a3a!important;
-  border-left:3px solid #5bc8f5!important;color:#fff!important}
-td{padding:5px 10px;white-space:nowrap;
-  overflow:hidden;text-overflow:ellipsis;max-width:160px}
-.badge{display:inline-block;padding:1px 6px;border-radius:3px;
-  font-size:11px;font-weight:700}
-.ba{background:rgba(244,67,54,.2);color:#f44336;
-  border:1px solid rgba(244,67,54,.4)}
-.bn{background:rgba(80,80,100,.15);color:#555;border:1px solid #2a2a4a}
-
-/* ── Right: Detail panel ── */
-.right{flex:2;display:flex;flex-direction:column;
-  background:#0d0d1a;min-width:360px;overflow:hidden}
-
-/* ── Tabs ── */
-.tabs{display:flex;background:#111122;
-  border-bottom:2px solid #1e1e3a;flex-shrink:0}
-.tab{flex:1;padding:10px 6px;text-align:center;
-  font-size:11px;font-weight:700;cursor:pointer;
-  color:#444;border-bottom:2px solid transparent;
-  transition:all .2s;text-transform:uppercase;letter-spacing:1px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;font-family:'Consolas',monospace}
+thead th{background:#0a0a16;padding:11px 14px;text-align:left;font-size:11.5px;color:#9aa2c0;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;position:sticky;top:0;border-bottom:2px solid #2a2a4a;z-index:1}
+tbody tr{border-bottom:1px solid #1a1a30;cursor:pointer;transition:background .12s}
+tbody tr.attack{background:rgba(244,67,54,.045);border-left:2px solid #f44336}
+tbody tr.normal{background:transparent;border-left:2px solid transparent}
+tbody tr.attack:hover{background:rgba(244,67,54,.09)}
+tbody tr.normal:hover{background:#14142a}
+tbody tr.selected{background:#1e1e38!important}
+td{padding:10px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;color:#b8c0da;font-size:13px}
+td.evid-attack{color:#ff6b6a;font-weight:700}
+td.evid-normal{color:#9aa2c0;font-weight:600}
+td.status-cell{font-size:12px;font-weight:700;letter-spacing:.3px}
+.status-attack{color:#ff6b6a}
+.status-normal{color:#7d86a3;font-weight:600}
+.row-num{color:#5a6284;font-size:12px}
+.badge{display:inline-block;padding:1px 7px;border-radius:3px;font-size:11px;font-weight:700}
+.badge-atk{background:rgba(244,67,54,.2);color:#f44336;border:1px solid #f44336}
+.badge-flag{background:rgba(255,152,0,.15);color:#ff9800;border:1px solid #ff9800}
+.badge-ok{background:rgba(76,175,80,.1);color:#4caf50;border:1px solid #4caf50}
+.right{flex:1;display:flex;flex-direction:column;background:#0d0d1a;overflow:hidden;min-width:360px}
+.tabs{display:flex;background:#111122;border-bottom:1px solid #1e1e3a;flex-shrink:0}
+.tab{flex:1;padding:12px 6px;text-align:center;font-size:12px;font-weight:700;color:#a8b0cc;text-transform:uppercase;letter-spacing:1px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:4px}
 .tab:hover{color:#c9d1e0;background:#0d0d1a}
-.tab.active{color:#5bc8f5;border-bottom:2px solid #5bc8f5;
-  background:#0d0d1a}
-.tab .ticon{font-size:14px;display:block;margin-bottom:2px}
-
-/* ── Tab content ── */
+.tab.active{color:#5bc8f5;border-bottom-color:#5bc8f5}
+.tab .ticon{font-size:17px}
 .tab-content{display:none;flex:1;overflow-y:auto;padding:16px}
 .tab-content.active{display:block}
-.tab-content::-webkit-scrollbar{width:5px}
+.tab-content::-webkit-scrollbar{width:4px}
 .tab-content::-webkit-scrollbar-thumb{background:#2a2a4a}
-
-/* ── Section title ── */
-.stitle{font-size:10px;text-transform:uppercase;letter-spacing:2px;
-  color:#555;margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.stitle::before{content:'';display:inline-block;width:3px;height:12px;
-  background:#5bc8f5;border-radius:2px}
-
-/* ── Detail rows ── */
-.drow{display:flex;gap:10px;padding:5px 0;font-size:12px;
-  border-bottom:1px solid #0a0a16}
-.drow:last-child{border-bottom:none}
-.dl{color:#444;min-width:100px;font-size:11px;flex-shrink:0}
-.dv{color:#c9d1e0;word-break:break-all;
-  font-family:'Consolas',monospace;font-size:12px}
-.dv.red{color:#f44336;font-weight:700}
-.dv.grn{color:#4caf50}
-.dv.ora{color:#ff9800}
-.dv.blu{color:#5bc8f5}
-
-/* ── Plain English box ── */
-.explain{background:#050d18;border:1px solid #1e3a5a;
-  border-left:4px solid #5bc8f5;border-radius:6px;padding:14px;
-  margin-bottom:14px}
-.explain .etitle{font-size:10px;font-weight:700;color:#5bc8f5;
-  text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
-.explain .etext{font-size:13px;line-height:1.75;color:#90b8d0}
-
-/* ── Attack card ── */
-.acard{background:rgba(244,67,54,.05);
-  border:1px solid rgba(244,67,54,.2);
-  border-left:4px solid #f44336;border-radius:6px;
-  padding:12px;margin-bottom:12px}
-.aname{color:#f44336;font-weight:700;font-size:14px;margin-bottom:4px}
-.amitre{font-size:11px;color:#ff9800;margin-bottom:8px;
-  font-family:'Consolas',monospace}
-.rrow{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.stitle{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#8890a8;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #1e1e3a}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;color:#2a2a4a;gap:8px}
+.ei{font-size:32px}
+.et{font-size:12px}
+/* Overview */
+.explain-box{background:#0a1520;border:1px solid #1e3a5a;border-left:3px solid #5bc8f5;border-radius:4px;padding:12px;margin-bottom:12px;font-size:13px;line-height:1.6;color:#a0c4e0}
+.explain-title{font-size:10px;color:#5bc8f5;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.why-box{background:#0a1a0a;border-left:3px solid #4caf50;padding:8px 12px;margin-bottom:12px;font-size:11px;color:#6a9a6a;font-style:italic}
+.detail-row{display:flex;gap:8px;padding:5px 0;font-size:12px;border-bottom:1px solid #111122}
+.detail-row:last-child{border-bottom:none}
+.dl{color:#8890a8;min-width:90px;font-size:11px}
+.dv{color:#c9d1e0;word-break:break-all}
+.dv-r{color:#f44336;font-weight:700}
+.dv-g{color:#4caf50}
+.atk-card{background:#1a0a0a;border:1px solid rgba(244,67,54,.3);border-left:3px solid #f44336;border-radius:4px;padding:12px;margin-bottom:10px}
+.atk-name{color:#f44336;font-weight:700;font-size:13px;margin-bottom:3px}
+.atk-mitre{font-size:11px;color:#ff9800;margin-bottom:8px}
+.risk-row{display:flex;align-items:center;gap:8px}
 .rbg{flex:1;height:7px;background:#1e1e3a;border-radius:4px;overflow:hidden}
-.rbar{height:100%;border-radius:4px;transition:width .5s}
-.rval{font-size:12px;font-weight:700;min-width:50px;text-align:right}
-.catbadge{display:inline-block;padding:2px 10px;border-radius:10px;
-  font-size:10px;font-weight:700;background:rgba(91,200,245,.1);
-  color:#5bc8f5;border:1px solid rgba(91,200,245,.3)}
-
-/* ── Principle ── */
-.principle{background:#0a0a16;border-left:3px solid #5bc8f5;
-  padding:8px 12px;border-radius:0 4px 4px 0;
-  font-size:12px;color:#7090a8;font-style:italic;margin-bottom:12px}
-
-/* ── Remediation steps ── */
-.steps{list-style:none}
-.steps li{display:flex;gap:10px;padding:8px 0;font-size:12px;
-  border-bottom:1px solid #0a0a16;color:#c9d1e0;
-  line-height:1.6;align-items:flex-start}
-.steps li:last-child{border-bottom:none}
-.snum{background:#f44336;color:#fff;border-radius:50%;
-  width:22px;height:22px;display:flex;align-items:center;
-  justify-content:center;font-size:10px;font-weight:700;
-  flex-shrink:0;margin-top:1px}
-
-/* ── Sources ── */
-.src-list{list-style:none}
-.src-list li{padding:6px 0;font-size:11px;color:#5bc8f5;
-  border-bottom:1px solid #0a0a16;line-height:1.5}
-.src-list li:last-child{border-bottom:none}
-.src-list li::before{content:'📎 ';color:#444}
-
-/* ── RL AI panel ── */
-.ai-panel{background:#080f18;border:1px solid rgba(91,200,245,.2);
-  border-left:4px solid #5bc8f5;border-radius:6px;
-  padding:12px;margin-bottom:12px}
-.ai-title{color:#5bc8f5;font-weight:700;font-size:12px;
-  margin-bottom:10px}
-.ai-row{display:flex;justify-content:space-between;
-  font-size:11px;padding:3px 0}
-.ai-row .k{color:#555}
-.ai-row .v{color:#c9d1e0;font-weight:600}
-.ai-row .v.exp{color:#ff9800}
-.ai-row .v.expl{color:#4caf50}
-.q-label{font-size:10px;color:#444;margin:8px 0 5px;
-  text-transform:uppercase;letter-spacing:1px}
-.q-row{display:flex;align-items:center;gap:8px;
-  padding:3px 0;font-size:10px}
-.q-name{color:#8a9ab8;min-width:160px;font-family:'Consolas',monospace}
+.rbar{height:100%;border-radius:4px;transition:width .6s}
+.rval{font-size:11px;font-weight:700;min-width:50px;text-align:right}
+.auto-badge{background:#0a2a0a;border:1px solid #4caf50;border-radius:4px;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:12px;color:#4caf50;margin-top:10px}
+.manual-banner{background:#2a1a0a;border:1px solid #ff9800;border-radius:4px;padding:12px;margin-top:10px}
+.manual-title{font-size:12px;font-weight:700;color:#ff9800;margin-bottom:8px}
+.manual-steps{margin:0;padding-left:20px;color:#e0c9a0;font-size:12px;line-height:1.7}
+.manual-steps li{margin-bottom:4px}
+/* Remediation */
+.steps-list{list-style:none}
+.steps-list li{display:flex;gap:8px;padding:8px 0;font-size:12px;border-bottom:1px solid #111122;align-items:flex-start;color:#c9d1e0}
+.steps-list li:last-child{border-bottom:none}
+.snum{background:#5bc8f5;color:#0d0d1a;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px}
+.steps-list-new{list-style:none}
+.step-item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid #111122;align-items:flex-start}
+.step-item:last-child{border-bottom:none}
+.step-num{background:#5bc8f5;color:#0d0d1a;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-body{flex:1;min-width:0}
+.step-desc{color:#c9d1e0;font-size:12.5px;line-height:1.4;margin-bottom:6px}
+.step-cmd-label{font-size:9.5px;color:#4caf50;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.step-cmd{background:#0a0a16;border:1px solid #1e1e3a;border-left:2px solid #4caf50;border-radius:4px;padding:7px 10px;font-family:'Consolas',monospace;font-size:11.5px;color:#8fd694;word-break:break-all;white-space:pre-wrap}
+.step-hint{font-size:10.5px;color:#ff9800;margin-top:6px;font-style:italic;line-height:1.4}
+.remed-intro{background:#0a1520;border:1px solid #1e3a5a;border-radius:4px;padding:12px;margin-bottom:12px}
+.remed-intro-title{font-size:11.5px;font-weight:700;color:#5bc8f5;margin-bottom:6px}
+.remed-intro-text{font-size:11.5px;color:#a0c4e0;line-height:1.55}
+.remed-context{background:#12121f;border:1px solid #1e1e3a;border-radius:4px;padding:12px;margin-bottom:6px}
+.remed-context-title{font-size:11px;font-weight:700;color:#c9d1e0;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.remed-context-text{font-size:12px;color:#c9d1e0;line-height:1.5;margin-bottom:8px}
+.remed-context-why{font-size:11.5px;color:#6a9a6a;font-style:italic;line-height:1.5}
+.src-box{margin-top:12px}
+.src-item{font-size:11px;color:#8890a8;padding:3px 0;border-bottom:1px solid #111122}
+.src-item a{color:#5bc8f5;text-decoration:none}
+/* AI Decision */
+.ai-panel{background:#0a0f1a;border:1px solid #1e2a3a;border-radius:4px;padding:12px;margin-bottom:10px}
+.ai-title{color:#5bc8f5;font-weight:700;font-size:12px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.ai-row{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #111122}
+.ai-row:last-child{border-bottom:none}
+.ai-label{color:#8890a8}
+.ai-val{color:#c9d1e0;font-weight:700}
+.ai-val-g{color:#4caf50;font-weight:700}
+.ai-val-b{color:#5bc8f5;font-weight:700}
+.q-section{margin-top:10px}
+.q-title{font-size:10px;color:#8890a8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.q-row{display:flex;align-items:center;gap:6px;padding:3px 0}
+.q-name{font-size:10px;color:#c9d1e0;min-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .q-bg{flex:1;height:5px;background:#1e1e3a;border-radius:3px;overflow:hidden}
-.q-fill{height:100%;border-radius:3px;background:#5bc8f5}
-.q-fill.good{background:#4caf50}
-.q-val{font-size:10px;color:#5bc8f5;min-width:34px;text-align:right}
-.act-list{list-style:none;margin-top:6px}
-.act-list li{display:flex;align-items:center;gap:6px;
-  padding:4px 0;font-size:11px;color:#c9d1e0;
-  border-bottom:1px solid #0a0a16}
-.act-list li:last-child{border-bottom:none}
+.q-bar{height:100%;border-radius:3px}
+.q-val{font-size:10px;color:#8890a8;min-width:35px;text-align:right}
+.actions-done{margin-top:10px}
+.action-item{font-size:11px;color:#4caf50;padding:3px 0;display:flex;align-items:center;gap:6px}
+.action-item::before{content:"checkmark";font-size:10px}
 .fb-row{display:flex;gap:8px;margin-top:10px}
-.fb-btn{flex:1;padding:7px;border:none;border-radius:4px;
-  cursor:pointer;font-size:11px;font-weight:700}
-.fb-yes{background:#0a2a0a;color:#4caf50;border:1px solid #4caf50}
-.fb-no {background:#2a0a0a;color:#f44336;border:1px solid #f44336}
-
-/* ── Resolution ── */
-.res{border-radius:6px;padding:12px 14px;display:flex;
-  align-items:flex-start;gap:10px;font-size:13px;font-weight:600}
-.res-ok{background:rgba(76,175,80,.06);
-  border:1px solid rgba(76,175,80,.3);color:#4caf50}
-.res-sub{font-size:11px;font-weight:400;margin-top:4px;
-  opacity:.8;line-height:1.5}
-
-/* ── Forensic cards ── */
-.forensic-card{background:#0a0f18;border:1px solid #1e2a3a;
-  border-radius:6px;padding:14px;margin-bottom:10px;
-  cursor:pointer;transition:border-color .2s}
-.forensic-card:hover{border-color:#5bc8f5}
-.fc-top{display:flex;justify-content:space-between;
-  align-items:flex-start;margin-bottom:8px}
-.fc-attack{color:#f44336;font-weight:700;font-size:13px}
-.fc-time{font-size:10px;color:#444}
-.fc-meta{display:flex;gap:12px;font-size:11px;color:#555;
-  margin-bottom:8px}
-.fc-logs{background:#0a0a16;border-radius:4px;padding:8px;
-  font-size:10px;font-family:'Consolas',monospace;
-  color:#7090a8;max-height:120px;overflow:hidden}
-.fc-btn{background:#1e2a3a;color:#5bc8f5;border:1px solid #2a3a4a;
-  border-radius:4px;padding:5px 12px;font-size:11px;
-  cursor:pointer;margin-top:8px;width:100%;font-weight:700}
-.fc-btn:hover{background:#2a3a4a}
-
-/* ── Actions log ── */
-.action-line{padding:5px 0;font-size:11px;
-  border-bottom:1px solid #0a0a16;
-  font-family:'Consolas',monospace;line-height:1.5}
-.action-line:last-child{border-bottom:none}
-.action-ok{color:#4caf50}
-.action-fail{color:#f44336}
-
-/* ── Empty state ── */
-.empty{display:flex;flex-direction:column;align-items:center;
-  justify-content:center;padding:40px;color:#2a2a4a;gap:10px;
-  min-height:200px}
-.empty .ei{font-size:36px;opacity:.3}
-.empty .et{font-size:13px;color:#333}
-
-/* ── Normal log detail ── */
-.normal-card{background:#0a0f18;border:1px solid #1e2a3a;
-  border-radius:6px;padding:14px;margin-bottom:12px}
-.normal-title{color:#4caf50;font-weight:700;
-  font-size:13px;margin-bottom:8px}
-
-.waiting{text-align:center;padding:28px;color:#333;font-size:13px}
+.fb-btn{flex:1;padding:7px;border:none;border-radius:4px;cursor:pointer;font-size:11px;font-weight:700}
+.fb-yes{background:#1a3a1a;color:#4caf50;border:1px solid #4caf50}
+.fb-no{background:#3a1a1a;color:#f44336;border:1px solid #f44336}
+/* Action Log */
+.action-log-item{padding:8px 0;border-bottom:1px solid #111122;font-size:11px;font-family:'Consolas',monospace}
+.al-ok{color:#4caf50}
+.al-fail{color:#f44336}
+.al-time{color:#8890a8;margin-right:8px}
 </style>
 </head>
 <body>
 
-<!-- Top Bar -->
 <div class="topbar">
   <div class="brand">
-    🛡️ <span class="cs">CyberSage</span> 2.0
-    <span class="ver">— AI Autonomous Security</span>
+    <span style="color:#5bc8f5">&#x1F6E1;&#xFE0F;</span>
+    <span class="cs"> CyberSage</span>
+    <span class="sub">-- AI Autonomous Security</span>
   </div>
   <div class="topright">
-    <span class="lastscan" id="lastScan">Last scan: —</span>
-    <div class="pill pill-ok" id="statusPill">● MONITORING</div>
+    <span class="lastscan" id="lastScan">Last scan: --</span>
+    <div class="pill pill-ok" id="statusPill">&#x25CF; MONITORING</div>
   </div>
 </div>
 
-<!-- Stats -->
 <div class="stats">
-  <div class="stat">
-    <div class="v w" id="totalScanned">0</div>
-    <div class="l">Logs Scanned</div>
-  </div>
-  <div class="stat">
-    <div class="v r" id="threatsFound">0</div>
-    <div class="l">Threats Found</div>
-  </div>
-  <div class="stat">
-    <div class="v o" id="attackPatterns">0</div>
-    <div class="l">Attack Patterns</div>
-  </div>
-  <div class="stat">
-    <div class="v r" id="riskScore">0</div>
-    <div class="l">Risk Score /100</div>
-  </div>
-  <div class="stat">
-    <div class="v m" id="rlEpisodes">0</div>
-    <div class="l">RL Episodes</div>
-  </div>
-  <div class="stat">
-    <div class="v b" id="scanCount">0</div>
-    <div class="l">Scans Done</div>
-  </div>
+  <div class="stat"><div class="v v-w" id="totalScanned">0</div><div class="l">LOGS SCANNED</div></div>
+  <div class="stat"><div class="v v-r" id="threatsFound">0</div><div class="l">THREATS FOUND</div></div>
+  <div class="stat"><div class="v v-o" id="attackPatterns">0</div><div class="l">ATTACK PATTERNS</div></div>
+  <div class="stat"><div class="v v-r" id="riskScore">0</div><div class="l">RISK SCORE /100</div></div>
+  <div class="stat"><div class="v v-m" id="rlEpisodes">0</div><div class="l">RL EPISODES</div></div>
+  <div class="stat"><div class="v v-b" id="scansDone">0</div><div class="l">SCANS DONE</div></div>
 </div>
 
-<!-- Main -->
 <div class="main">
-
-  <!-- LEFT: Live Log Table -->
+  <!-- LEFT: Log Table -->
   <div class="left">
     <div class="toolbar">
-      <span class="lbl">Live Logs</span>
-      <input type="text" id="filterIn"
-        placeholder="Filter by event, IP, account..."
-        oninput="filterLogs()">
-      <button class="btn btn-blue" onclick="triggerScan()">⚡ Scan Now</button>
+      <span class="lbl">LIVE LOGS</span>
+      <input type="text" id="filterInput" placeholder="Filter by event, IP, account..." oninput="filterLogs()">
+      <button class="btn btn-blue" onclick="triggerScan()">&#x26A1; Scan Now</button>
       <button class="btn btn-gray" onclick="clearLogs()">Clear</button>
     </div>
-    <div class="logwrap" id="logWrap">
+    <div class="logwrap">
       <table>
-        <thead><tr>
-          <th style="width:34px">#</th>
-          <th style="width:76px">Time</th>
-          <th style="width:66px">Event ID</th>
-          <th>Event Type</th>
-          <th style="width:110px">Source IP</th>
-          <th style="width:110px">Account</th>
-          <th style="width:72px">Status</th>
-        </tr></thead>
+        <thead>
+          <tr>
+            <th>#</th><th>TIME</th><th>EVENT ID</th>
+            <th>EVENT TYPE</th><th>SOURCE IP</th>
+            <th>ACCOUNT</th><th>STATUS</th>
+          </tr>
+        </thead>
         <tbody id="logBody">
-          <tr><td colspan="7" class="waiting">
-            🛡️ Waiting for scan... Click "Scan Now"
+          <tr><td colspan="7" style="text-align:center;color:#2a2a4a;padding:30px">
+            Waiting for scan... Click "Scan Now"
           </td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- RIGHT: Tabbed Detail Panel -->
+  <!-- RIGHT: Detail Panel -->
   <div class="right">
-
-    <!-- Tabs -->
     <div class="tabs">
       <div class="tab active" id="tab-overview" onclick="switchTab('overview')">
-        <span class="ticon">🔍</span>Overview
+        <span class="ticon">&#x1F50D;</span>OVERVIEW
       </div>
       <div class="tab" id="tab-remediation" onclick="switchTab('remediation')">
-        <span class="ticon">🔧</span>Remediation
+        <span class="ticon">&#x1F527;</span>REMEDIATION
       </div>
       <div class="tab" id="tab-ai" onclick="switchTab('ai')">
-        <span class="ticon">🤖</span>AI Decision
-      </div>
-      <div class="tab" id="tab-forensic" onclick="switchTab('forensic')">
-        <span class="ticon">📁</span>Forensics
+        <span class="ticon">&#x1F916;</span>AI DECISION
       </div>
       <div class="tab" id="tab-actions" onclick="switchTab('actions')">
-        <span class="ticon">📄</span>Action Log
+        <span class="ticon">&#x1F4CB;</span>ACTION LOG
       </div>
     </div>
 
-    <!-- Tab: Overview -->
+    <!-- Overview Tab -->
     <div class="tab-content active" id="content-overview">
       <div class="empty">
-        <div class="ei">🔍</div>
+        <div class="ei">&#x1F50D;</div>
         <div class="et">Click any log row to see details</div>
       </div>
     </div>
 
-    <!-- Tab: Remediation -->
+    <!-- Remediation Tab -->
     <div class="tab-content" id="content-remediation">
       <div class="empty">
-        <div class="ei">🔧</div>
-        <div class="et">Click an attack log to see remediation steps</div>
+        <div class="ei">&#x1F527;</div>
+        <div class="et">Select an attack to see remediation steps</div>
       </div>
     </div>
 
-    <!-- Tab: AI Decision -->
+    <!-- AI Decision Tab -->
     <div class="tab-content" id="content-ai">
       <div class="empty">
-        <div class="ei">🤖</div>
-        <div class="et">Click an attack log to see RL AI decision</div>
+        <div class="ei">&#x1F916;</div>
+        <div class="et">No attack selected -- click a red log row</div>
       </div>
     </div>
 
-    <!-- Tab: Forensics -->
-    <div class="tab-content" id="content-forensic">
-      <div class="stitle">Forensic Evidence Files</div>
-      <div id="forensicList">
-        <div class="empty">
-          <div class="ei">📁</div>
-          <div class="et">No forensic files yet — run an attack test</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tab: Action Log -->
+    <!-- Action Log Tab -->
     <div class="tab-content" id="content-actions">
-      <div class="stitle">CyberSage Actions Log</div>
-      <div id="actionLogList">
+      <div class="stitle">CYBERSAGE ACTIONS LOG</div>
+      <div id="actionsList">
         <div class="empty">
-          <div class="ei">📄</div>
-          <div class="et">No actions recorded yet</div>
+          <div class="ei">&#x1F4CB;</div>
+          <div class="et">No actions taken yet</div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
 <script>
 const socket = io();
-let allLogs    = [];
-let allAttacks = [];
-let selIdx     = null;
-let curLog     = null;
-let curAtk     = null;
+let currentAttacks = [];
+let currentLogs    = [];
+let selectedAtk    = null;
+let lastTab        = 'overview';
 
-// ── Socket ────────────────────────────────────
-socket.on("connect",  () => fetchAll());
-socket.on("update",   renderDashboard);
-socket.on("scanning", () => setStatus("SCANNING"));
+socket.on('connect', function() { console.log('CyberSage connected'); });
 
-function fetchAll() {
-  fetch("/api/state").then(r=>r.json()).then(renderDashboard);
-  fetchForensic();
+/* FIXED: backend (app.py) emits "update" and "scanning", but this
+   file was listening for "threat_update" and "status_update", which
+   never fire. Live push updates were silently doing nothing — the
+   dashboard was only ever updating via the 5s polling fallback.
+   Event names now match the backend exactly. */
+socket.on('update', updateDashboard);
+socket.on('scanning', function() { setStatus('SCANNING'); });
+
+function setStatus(s) {
+  var p = document.getElementById('statusPill');
+  if (s === 'UNDER ATTACK') {
+    p.textContent = 'UNDER ATTACK';
+    p.className = 'pill pill-atk';
+  } else if (s === 'SCANNING') {
+    p.textContent = 'SCANNING...';
+    p.className = 'pill pill-scan';
+  } else {
+    p.textContent = 'MONITORING';
+    p.className = 'pill pill-ok';
+  }
+}
+
+function updateDashboard(data) {
+  document.getElementById('totalScanned').textContent  = data.total_scanned  || 0;
+  document.getElementById('threatsFound').textContent  = data.threats_found  || 0;
+  document.getElementById('attackPatterns').textContent= (data.attacks||[]).length;
+  document.getElementById('riskScore').textContent     = data.risk_score     || 0;
+  document.getElementById('rlEpisodes').textContent    = data.rl_episodes    || 0;
+  document.getElementById('scansDone').textContent     = data.scan_count     || 0;
+  document.getElementById('lastScan').textContent      = 'Last scan: ' + (data.last_scan || '--');
+
+  if (data.status) setStatus(data.status);
+
+  currentAttacks = data.attacks  || [];
+  currentLogs    = data.all_logs || [];
+
+  buildLogTable(currentLogs);
+
+  if (currentAttacks.length > 0) {
+    selectedAtk = currentAttacks[0];
+    renderOverview(null, selectedAtk);
+    renderRemediation(selectedAtk);
+    renderAI(null, selectedAtk);
+  }
+
   fetchActions();
 }
 
-// ── Render stats + log table ──────────────────
-function renderDashboard(data) {
-  document.getElementById("totalScanned").textContent  = data.total_scanned||0;
-  document.getElementById("threatsFound").textContent  = data.threats_found||0;
-  document.getElementById("attackPatterns").textContent= (data.attacks||[]).length;
-  document.getElementById("scanCount").textContent     = data.scan_count||0;
-  document.getElementById("lastScan").textContent      = "Last scan: "+(data.last_scan||"—");
+/* FIXED: the backend's attack objects (from attack_classifier.py)
+   never actually include an "event_ids" field — so the previous
+   version's attackEventIds lookup was always empty, meaning a
+   genuinely confirmed attack (e.g. SCHEDULED_TASK really detected,
+   Attack Patterns=1) still showed as merely FLAGGED instead of
+   ATTACK. This map defines which Event IDs are relevant to each
+   attack pattern, built from the actual detection logic in
+   attack_classifier.py, so rows can be correctly classified without
+   needing a backend field that doesn't exist. */
+var PATTERN_EVENT_IDS = {
+  "NEW_ADMIN_USER"   : [4720, 4732, 4728],
+  "SCHEDULED_TASK"    : [4698, 4700, 4702],
+  "NEW_SERVICE"        : [7045, 4697],
+  "DEFENSE_EVASION"   : [1102],
+  "BRUTE_FORCE"          : [4625],
+  "PORT_SCAN"             : [5156, 5157],
+  "FILELESS_MALWARE"  : [4688],
+  "AI_PHISHING"           : [4688],
+};
 
-  const ep = data.attacks&&data.attacks[0] ? (data.attacks[0].ai_experience||0) : 0;
-  document.getElementById("rlEpisodes").textContent = ep;
+// Event IDs that are rare/meaningful enough to flag for monitoring
+// even when NOT part of an actively confirmed attack right now.
+// 4688 (process creation) is deliberately excluded — it fires
+// constantly during ordinary use and is not meaningful on its own;
+// it's only shown as ATTACK when it's genuinely part of a confirmed
+// FILELESS_MALWARE / AI_PHISHING detection below.
+var ALWAYS_WATCH_IDS = new Set([
+  4698, 4700, 4702, 4720, 4732, 4728, 7045, 4697, 1102, 4625, 5156, 5157
+]);
 
-  const rs   = data.risk_score||0;
-  const rsEl = document.getElementById("riskScore");
-  rsEl.textContent = rs;
-  rsEl.className   = "v "+(rs>=70?"r":rs>=40?"o":"g");
-
-  setStatus(data.status||"MONITORING");
-  allAttacks = data.attacks||[];
-  allLogs    = data.all_logs||[];
-  buildTable(allLogs);
-
-  // Auto-select first attack row (but don't switch tabs)
-  const fi = allLogs.findIndex(l=>l.suspicious);
-  if (fi>=0 && selIdx===null) {
-    // Only auto-select if nothing selected yet
-    setTimeout(()=>selectLogNoTabSwitch(fi), 200);
-  }
-}
-
-function setStatus(s) {
-  const p = document.getElementById("statusPill");
-  if      (s==="SCANNING")     {p.textContent="⟳ SCANNING...";  p.className="pill pill-scan";}
-  else if (s==="UNDER ATTACK") {p.textContent="⚠ UNDER ATTACK"; p.className="pill pill-atk";}
-  else                         {p.textContent="● MONITORING";    p.className="pill pill-ok";}
-}
-
-// ── Build log table ───────────────────────────
-function buildTable(logs) {
-  const body   = document.getElementById("logBody");
-  const filter = document.getElementById("filterIn").value.toLowerCase();
-  body.innerHTML = "";
-  if (!logs||!logs.length) {
-    body.innerHTML='<tr><td colspan="7" class="waiting">No logs — click Scan Now</td></tr>';
+function buildLogTable(logs) {
+  var tbody = document.getElementById('logBody');
+  if (!logs || logs.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#2a2a4a;padding:30px">No logs yet</td></tr>';
     return;
   }
-  logs.forEach((log,i) => {
-    if (filter&&!JSON.stringify(log).toLowerCase().includes(filter)) return;
-    const susp = log.suspicious;
-    const tr   = document.createElement("tr");
-    tr.className = susp?"attack":"normal";
-    tr.id = "row-"+i;
-    tr.onclick = () => selectLog(i);
 
-    const t    = (log.time||"").split(" ").slice(3,4).join("")||"—";
-    const eid  = log.event_id||"—";
-    const lbl  = log.event_label||(  "Event "+eid);
-    const ip   = log.source_ip||"—";
-    const acct = (log.target_account&&log.target_account!=="nan")
-                 ? log.target_account : "—";
-    const bc   = susp?"ba":"bn";
-    const st   = susp
-      ? `<span style="color:#f44336;font-size:10px;font-weight:700">⚠ ATTACK</span>`
-      : `<span style="color:#333;font-size:10px">NORMAL</span>`;
-
-    tr.innerHTML=`
-      <td style="color:#333">${i+1}</td>
-      <td style="font-size:11px">${t}</td>
-      <td><span class="badge ${bc}">${eid}</span></td>
-      <td title="${lbl}">${lbl}</td>
-      <td style="${ip!=="—"?"color:#f44336":"color:#444"}">${ip}</td>
-      <td style="${acct!=="—"?"color:#c9d1e0":"color:#444"}">${acct}</td>
-      <td>${st}</td>`;
-    body.appendChild(tr);
+  // Only two states shown: NORMAL, or ATTACK when the row's event_id
+  // genuinely belongs to a currently confirmed attack pattern. No
+  // "FLAGGED" middle state — keeps the live log clean and readable,
+  // with red reserved strictly for real, confirmed detections.
+  var confirmedIds = {};
+  currentAttacks.forEach(function(a) {
+    var ids = PATTERN_EVENT_IDS[a.pattern] || [];
+    ids.forEach(function(id) { confirmedIds[id] = true; });
   });
+
+  var html = '';
+  logs.forEach(function(log, i) {
+    var isConfirmedAttack = !!confirmedIds[log.event_id];
+
+    var cls, statusHtml, idClass;
+    if (isConfirmedAttack) {
+      cls = 'attack';
+      statusHtml = '<span class="status-attack">&#9888; ATTACK</span>';
+      idClass = 'evid-attack';
+    } else {
+      cls = 'normal';
+      statusHtml = '<span class="status-normal">NORMAL</span>';
+      idClass = 'evid-normal';
+    }
+
+    var t = log.time ? log.time.toString().substring(11,19) : '--';
+    html += '<tr class="' + cls + '" onclick="selectLog(' + i + ')">';
+    html += '<td class="row-num">' + (i+1) + '</td>';
+    html += '<td>' + t + '</td>';
+    html += '<td class="' + idClass + '">' + log.event_id + '</td>';
+    html += '<td style="max-width:220px;color:' + (isConfirmedAttack?'#ff6b6a':'#c9d1e0') + (isConfirmedAttack?';font-weight:600':'') + '">' + (log.event_label||'--') + '</td>';
+    html += '<td style="color:#a8b0cc">' + (log.source_ip||'--') + '</td>';
+    html += '<td style="color:' + (log.target_account && log.target_account!=='nan' ? '#c9d1e0':'#5a6284') + '">' + (log.target_account && log.target_account!=='nan' ? log.target_account : '--') + '</td>';
+    html += '<td class="status-cell">' + statusHtml + '</td>';
+    html += '</tr>';
+  });
+  tbody.innerHTML = html;
 }
 
-// ── Select log row ────────────────────────────
-function selectLog(i) {
-  if (selIdx!==null) {
-    const old = document.getElementById("row-"+selIdx);
-    if (old) old.classList.remove("sel");
-  }
-  selIdx = i;
-  const row = document.getElementById("row-"+i);
-  if (row) row.classList.add("sel");
+function selectLog(idx) {
+  currentLogs.forEach(function(_,i) {
+    var row = document.getElementById('logBody').rows[i];
+    if (row) row.classList.remove('selected');
+  });
+  var row = document.getElementById('logBody').rows[idx];
+  if (row) row.classList.add('selected');
 
-  curLog = allLogs[i];
-  if (!curLog) return;
-  curAtk = findAttack(curLog.event_id);
+  var log = currentLogs[idx];
+  if (!log) return;
 
-  // Update all tab contents
-  renderOverview(curLog, curAtk);
-  renderRemediation(curLog, curAtk);
-  renderAI(curLog, curAtk);
+  /* FIXED: same root cause as buildLogTable — attack.event_ids never
+     actually exists on backend attack objects, so this always failed
+     to match. Now uses PATTERN_EVENT_IDS to find which currently
+     detected attack (if any) this row's event_id actually belongs to. */
+  var atk = null;
+  currentAttacks.forEach(function(a) {
+    var ids = PATTERN_EVENT_IDS[a.pattern] || [];
+    if (ids.indexOf(log.event_id) >= 0) atk = a;
+  });
+  selectedAtk = atk;
 
-  // Only switch to overview if no tab was manually selected yet
-  // or if user is on overview already
-  const activeTab = document.querySelector('.tab.active');
-  const activeTabId = activeTab ? activeTab.id : 'tab-overview';
-  if (activeTabId === 'tab-overview') {
-    switchTab("overview");
-  }
-  // If user is on remediation/ai/forensic tab, stay there
-  // but refresh the content for the new selected log
+  renderOverview(log, atk);
+  renderRemediation(atk);
+  renderAI(log, atk);
+  switchTabNoScroll(lastTab === 'actions' ? 'overview' : lastTab);
 }
 
-// ── Select log WITHOUT switching tab ─────────
-function selectLogNoTabSwitch(i) {
-  if (selIdx!==null) {
-    const old = document.getElementById("row-"+selIdx);
-    if (old) old.classList.remove("sel");
-  }
-  selIdx = i;
-  const row = document.getElementById("row-"+i);
-  if (row) row.classList.add("sel");
-  curLog = allLogs[i];
-  if (!curLog) return;
-  curAtk = findAttack(curLog.event_id);
-  // Update all tab contents but DON'T switch tab
-  renderOverview(curLog, curAtk);
-  renderRemediation(curLog, curAtk);
-  renderAI(curLog, curAtk);
-  // Don't call switchTab here — user stays on current tab
-}
-
-// ── Find matching attack ──────────────────────
-function findAttack(eid) {
-  const map = {
-    4625:"BRUTE_FORCE", 4624:"UNAUTHORIZED_RDP",
-    4698:"SCHEDULED_TASK", 7045:"NEW_SERVICE",
-    4657:"REGISTRY_RUN_KEY", 4720:"NEW_ADMIN_USER",
-    4732:"NEW_ADMIN_USER", 1102:"DEFENSE_EVASION",
-    4656:"CREDENTIAL_DUMPING", 4663:"RANSOMWARE",
-    4688:"FILELESS_MALWARE", 5156:"PORT_SCAN", 4672:"BRUTE_FORCE",
-  };
-  const p = map[eid];
-  return allAttacks.find(a=>a.pattern===p)||allAttacks[0]||null;
-}
-
-// ── Tab: Overview ─────────────────────────────
 function renderOverview(log, atk) {
-  const c   = document.getElementById("content-overview");
-  const susp= log.suspicious;
-  const risk= atk?atk.risk:0;
-  const rc  = risk>=80?"#f44336":risk>=50?"#ff9800":"#4caf50";
-  const pe  = atk ? (atk.plain_english||"").replace("{count}",atk.count||"") : "";
+  var html = '';
 
-  if (!susp||!atk) {
-    c.innerHTML=`
-      <div class="stitle">Event Details</div>
-      <div class="normal-card">
-        <div class="normal-title">✓ Normal System Activity</div>
-        <div class="drow"><div class="dl">Event ID</div><div class="dv">${log.event_id}</div></div>
-        <div class="drow"><div class="dl">Type</div><div class="dv">${log.event_label||"—"}</div></div>
-        <div class="drow"><div class="dl">Time</div><div class="dv">${log.time||"—"}</div></div>
-        <div class="drow"><div class="dl">Source</div><div class="dv">${log.source||"—"}</div></div>
-      </div>
-      <div class="explain">
-        <div class="etitle">💬 What this means</div>
-        <div class="etext">
-          This is a routine Windows system event.
-          No attack indicators detected. No action required.
-        </div>
-      </div>`;
+  if (atk) {
+    html += '<div class="explain-title">PLAIN ENGLISH EXPLANATION</div>';
+    html += '<div class="explain-box">' + (atk.explanation || atk.plain_english || 'CyberSage detected and remediated this attack automatically.') + '</div>';
+
+    if (atk.principle) {
+      html += '<div class="why-box"><strong>Why this fix works:</strong> ' + atk.principle + '</div>';
+    }
+  }
+
+  if (log) {
+    html += '<div class="stitle" style="margin-top:10px">EVENT DETAILS</div>';
+    html += '<div class="detail-row"><div class="dl">Event ID</div><div class="dv dv-r">' + log.event_id + '</div></div>';
+    html += '<div class="detail-row"><div class="dl">Type</div><div class="dv">' + (log.event_label||'--') + '</div></div>';
+    html += '<div class="detail-row"><div class="dl">Time</div><div class="dv">' + (log.time||'--') + '</div></div>';
+    if (log.source_ip) html += '<div class="detail-row"><div class="dl">Attacker IP</div><div class="dv dv-r">' + log.source_ip + '</div></div>';
+    if (log.target_account) html += '<div class="detail-row"><div class="dl">Target</div><div class="dv">' + log.target_account + '</div></div>';
+
+    /* FIXED: this line used to hardcode "SUSPICIOUS" in red no
+       matter what. Now it reflects the actual log.suspicious flag,
+       so a NORMAL row correctly shows NORMAL in green. */
+    var statusText  = log.suspicious ? 'SUSPICIOUS' : 'NORMAL';
+    var statusClass = log.suspicious ? 'dv-r' : 'dv-g';
+    html += '<div class="detail-row"><div class="dl">Status</div><div class="dv ' + statusClass + '">' + statusText + '</div></div>';
+  }
+
+  if (atk) {
+    html += '<div class="stitle" style="margin-top:10px">MITRE ATT&CK</div>';
+    html += '<div class="atk-card">';
+    html += '<div class="atk-name">&#x26A0;&#xFE0F; ' + (atk.name||atk.pattern) + '</div>';
+    html += '<div class="atk-mitre">' + (atk.mitre_id||'') + ' -- ' + (atk.mitre_tactic||'') + '</div>';
+    html += '<div class="risk-row">';
+    var risk = atk.risk || 0;
+    var rc = risk>=80?'#f44336':risk>=60?'#ff9800':'#4caf50';
+    html += '<div class="rbg"><div class="rbar" style="width:' + risk + '%;background:' + rc + '"></div></div>';
+    html += '<div class="rval" style="color:' + rc + '">' + risk + '/100</div>';
+    html += '</div>';
+    if (atk.mitre_url) html += '<div style="margin-top:6px"><a href="' + atk.mitre_url + '" target="_blank" style="color:#5bc8f5;font-size:11px">View on MITRE &#x2197;</a></div>';
+    html += '</div>';
+
+    /* FIXED: this used to unconditionally show "automatically
+       remediated" no matter what actually happened — even when the
+       real outcome was "failed", "partial", or "skipped_cooldown".
+       That's misleading. Now it only claims success when the AI's
+       outcome genuinely was success. Otherwise, it shows a clear
+       manual-steps banner pulling the exact commands already defined
+       in mitre_engine.py's "remediation" list, so an analyst can act
+       manually when automation didn't fully resolve the incident. */
+    var outcome = (atk.ai_outcome || '').toLowerCase();
+    if (outcome === 'success') {
+      html += '<div class="auto-badge">&#x2705; CyberSage AI automatically remediated</div>';
+    } else {
+      html += '<div class="manual-banner">';
+      html += '<div class="manual-title">&#x26A0;&#xFE0F; Automatic remediation ' +
+              (outcome === 'skipped_cooldown' ? 'was skipped (recently handled)' :
+               outcome === 'partial' ? 'only partially succeeded' :
+               'did not complete') + ' -- manual steps below</div>';
+      if (atk.remediation && atk.remediation.length > 0) {
+        html += '<ol class="manual-steps">';
+        atk.remediation.forEach(function(step) {
+          html += '<li>' + step + '</li>';
+        });
+        html += '</ol>';
+      }
+      html += '</div>';
+    }
+  }
+
+  if (!log && !atk) {
+    html = '<div class="empty"><div class="ei">&#x1F50D;</div><div class="et">Click any log row to see details</div></div>';
+  }
+
+  document.getElementById('content-overview').innerHTML = html;
+}
+
+function renderRemediation(atk) {
+  if (!atk || !atk.remediation) {
+    document.getElementById('content-remediation').innerHTML =
+      '<div class="empty"><div class="ei">&#x1F527;</div><div class="et">Select an attack to see steps</div></div>';
     return;
   }
 
-  c.innerHTML=`
-    <div class="stitle">Plain English Explanation</div>
-    <div class="explain">
-      <div class="etitle">💬 What happened — in simple words</div>
-      <div class="etext">${pe}</div>
-    </div>
-    ${atk.principle?`<div class="principle">
-      <strong>Why this fix works:</strong> ${atk.principle}
-    </div>`:""}
+  var html = '<div class="stitle">REMEDIATION STEPS</div>';
 
-    <div class="stitle" style="margin-top:14px">Event Details</div>
-    <div class="drow"><div class="dl">Event ID</div>
-      <div class="dv red">${log.event_id}</div></div>
-    <div class="drow"><div class="dl">Type</div>
-      <div class="dv">${log.event_label||"—"}</div></div>
-    <div class="drow"><div class="dl">Time</div>
-      <div class="dv">${log.time||"—"}</div></div>
-    ${log.source_ip?`<div class="drow"><div class="dl">Attacker IP</div>
-      <div class="dv red">${log.source_ip}</div></div>`:""}
-    ${log.target_account&&log.target_account!=="nan"
-      ?`<div class="drow"><div class="dl">Target</div>
-        <div class="dv ora">${log.target_account}</div></div>`:""}
-    <div class="drow"><div class="dl">Status</div>
-      <div class="dv red">⚠ SUSPICIOUS</div></div>
+  // ── Context intro: what is this, why does it matter, how to use this tab ──
+  html += '<div class="remed-intro">';
+  html += '<div class="remed-intro-title">What is CyberSage, and how do I use this tab?</div>';
+  html += '<div class="remed-intro-text">CyberSage is an AI security agent that watches your computer\'s activity logs, ' +
+          'recognizes known attack patterns, and fixes them automatically -- usually within 30 seconds, with no ' +
+          'human needing to do anything. The steps below are exactly what CyberSage just did (or would do) to stop ' +
+          'this specific attack. You do not need any security background to follow them: each step explains, in plain ' +
+          'words, what it accomplishes and why, followed by the exact command to type into an <b>Administrator</b> ' +
+          'Command Prompt or PowerShell window if you ever need to do it yourself.</div>';
+  html += '</div>';
 
-    <div class="stitle" style="margin-top:14px">MITRE ATT&amp;CK</div>
-    <div class="acard">
-      <div class="aname">⚠ ${atk.name||atk.pattern}</div>
-      <div class="amitre">${atk.mitre_id} — ${atk.mitre_tactic}</div>
-      <div class="rrow">
-        <div class="rbg">
-          <div class="rbar" style="width:${risk}%;background:${rc}"></div>
-        </div>
-        <div class="rval" style="color:${rc}">${risk}/100</div>
-      </div>
-      <span class="catbadge">${atk.category||""}</span>
-      &nbsp;
-      <a href="${atk.mitre_url||"#"}" target="_blank"
-         style="font-size:11px;color:#5bc8f5;text-decoration:none">
-        View on MITRE ↗
-      </a>
-    </div>
-
-    <div class="res res-ok">
-      <div style="font-size:22px">✅</div>
-      <div>
-        <div>CyberSage AI automatically remediated</div>
-        <div class="res-sub">
-          Click "Remediation" tab for steps •
-          Click "AI Decision" tab for how AI fixed it •
-          Click "Forensics" tab for evidence files
-        </div>
-      </div>
-    </div>`;
-}
-
-// ── Tab: Remediation ──────────────────────────
-function renderRemediation(log, atk) {
-  const c = document.getElementById("content-remediation");
-  if (!log.suspicious||!atk) {
-    c.innerHTML=`<div class="empty">
-      <div class="ei">🔧</div>
-      <div class="et">No attack selected — click a red log row</div>
-    </div>`;
-    return;
+  if (atk.plain_english || atk.principle) {
+    html += '<div class="remed-context">';
+    html += '<div class="remed-context-title">This specific attack, in plain words</div>';
+    if (atk.plain_english) html += '<div class="remed-context-text">' + atk.plain_english + '</div>';
+    if (atk.principle) html += '<div class="remed-context-why"><b>Why these fixes work:</b> ' + atk.principle + '</div>';
+    html += '</div>';
   }
 
-  const steps = (atk.remediation||[]).map((s,i)=>
-    `<li><div class="snum">${i+1}</div><div>${s}</div></li>`
-  ).join("");
+  html += '<div style="font-size:11px;color:#8890a8;margin:12px 0 6px">Based on MITRE ' + (atk.mitre_id||'') + ' official mitigations</div>';
 
-  const srcs = (atk.sources||[]).map(s=>`<li>${s}</li>`).join("");
+  /* Auto-substitute real values into command placeholders wherever we
+     actually have them, instead of leaving [account]/[name] as raw
+     placeholders a non-technical reader wouldn't know how to fill in.
+     target_account doubles as the task/service/account name depending
+     on attack type -- that matches how the backend populates it. */
+  var subs = {
+    '[account]'      : atk.target_account,
+    '[name]'         : atk.target_account,
+    '[service_name]' : atk.target_account,
+    '[task_name]'    : atk.target_account,
+    '[attacker_ip]'  : atk.attacker_ip,
+  };
 
-  c.innerHTML=`
-    <div class="stitle">Remediation Steps</div>
-    <p style="font-size:11px;color:#555;margin-bottom:12px">
-      Based on MITRE ${atk.mitre_id} official mitigations
-    </p>
-    <ul class="steps">${steps}</ul>
+  html += '<ol class="steps-list-new">';
+  atk.remediation.forEach(function(step, i) {
+    var splitIdx = step.indexOf(':');
+    var desc, cmd;
+    if (splitIdx > -1 && splitIdx < step.length - 1) {
+      desc = step.substring(0, splitIdx).trim();
+      cmd  = step.substring(splitIdx + 1).trim();
+    } else {
+      desc = step; cmd = null;
+    }
 
-    ${srcs?`<div class="stitle" style="margin-top:16px">Sources</div>
-    <ul class="src-list">${srcs}</ul>`:""}`;
+    html += '<li class="step-item">';
+    html += '<div class="step-num">' + (i+1) + '</div>';
+    html += '<div class="step-body">';
+    html += '<div class="step-desc">' + desc + '</div>';
+
+    if (cmd) {
+      var filledCmd = cmd;
+      var missingPlaceholders = [];
+      Object.keys(subs).forEach(function(ph) {
+        if (filledCmd.indexOf(ph) >= 0) {
+          if (subs[ph] && subs[ph] !== 'nan' && subs[ph] !== 'null') {
+            filledCmd = filledCmd.split(ph).join(subs[ph]);
+          } else {
+            missingPlaceholders.push(ph);
+          }
+        }
+      });
+
+      html += '<div class="step-cmd-label">Command' + (missingPlaceholders.length ? ' (fill in the highlighted part)' : ' -- ready to run') + ':</div>';
+      html += '<div class="step-cmd">' + filledCmd.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>';
+
+      if (missingPlaceholders.length) {
+        html += '<div class="step-hint">CyberSage didn\'t capture a specific value for ' +
+                missingPlaceholders.join(', ') +
+                ' on this detection -- check the "Event Details" section on the Overview tab ' +
+                '(look at the Target field) and swap it in manually before running this command.</div>';
+      }
+    } else {
+      html += '<div class="step-cmd-label" style="color:#6a7290">No command -- this is a manual review step (e.g. checking a file or a registry key by hand, not something with one fixed command)</div>';
+    }
+    html += '</div></li>';
+  });
+  html += '</ol>';
+
+  if (atk.sources && atk.sources.length > 0) {
+    html += '<div class="src-box"><div class="stitle" style="margin-top:14px">SOURCES</div>';
+    atk.sources.forEach(function(src) {
+      html += '<div class="src-item">&#x1F4CE; ' + src + '</div>';
+    });
+    html += '</div>';
+  }
+  document.getElementById('content-remediation').innerHTML = html;
 }
 
-// ── Tab: AI Decision ──────────────────────────
 function renderAI(log, atk) {
-  const c = document.getElementById("content-ai");
-  if (!log.suspicious||!atk) {
-    c.innerHTML=`<div class="empty">
-      <div class="ei">🤖</div>
-      <div class="et">No attack selected — click a red log row</div>
-    </div>`;
+  if (!atk) {
+    document.getElementById('content-ai').innerHTML =
+      '<div class="empty"><div class="ei">&#x1F916;</div><div class="et">No attack selected</div></div>';
     return;
   }
+  var html = '<div class="stitle">Q-LEARNING AI DECISION</div>';
+  html += '<div class="ai-panel">';
+  html += '<div class="ai-title">&#x1F916; What the RL AI decided and why</div>';
+  html += '<div class="ai-row"><div class="ai-label">Decision Mode</div><div class="ai-val ai-val-g">' + (atk.ai_mode||'EXPLOIT') + '</div></div>';
+  html += '<div class="ai-row"><div class="ai-label">Confidence</div><div class="ai-val ai-val-b">' + (atk.ai_confidence||0) + '%</div></div>';
+  html += '<div class="ai-row"><div class="ai-label">Episodes Learned</div><div class="ai-val">' + (atk.ai_experience||0) + ' attacks</div></div>';
+  html += '<div class="ai-row"><div class="ai-label">Explore Rate</div><div class="ai-val">' + ((atk.ai_explore||0)*100).toFixed(1) + '%</div></div>';
+  html += '<div class="ai-row"><div class="ai-label">Outcome</div><div class="ai-val ai-val-g">' + (atk.ai_outcome||'SUCCESS').toUpperCase() + '</div></div>';
+  html += '</div>';
 
-  const aiMode    = atk.ai_mode||"—";
-  const aiConf    = atk.ai_confidence||0;
-  const aiEp      = atk.ai_experience||0;
-  const aiExplore = atk.ai_explore||0;
-  const aiDone    = atk.ai_actions_done||[];
-  const aiActions = atk.ai_actions||[];
-  const aiOutcome = atk.ai_outcome||"—";
-  const qSnap     = atk.ai_q_snapshot||{};
+  if (atk.ai_q_snapshot && Object.keys(atk.ai_q_snapshot).length > 0) {
+    html += '<div class="q-section"><div class="q-title">Q-VALUES (AI LEARNED VALUES PER ACTION)</div>';
+    var entries = Object.entries(atk.ai_q_snapshot).sort(function(a,b){return b[1]-a[1];});
+    entries.forEach(function(entry, i) {
+      var pct = Math.round(entry[1]*100);
+      var col = i===0?'#4caf50':'#5bc8f5';
+      html += '<div class="q-row">';
+      html += '<div class="q-name">' + entry[0] + '</div>';
+      html += '<div class="q-bg"><div class="q-bar" style="width:' + pct + '%;background:' + col + '"></div></div>';
+      html += '<div class="q-val">' + entry[1].toFixed(3) + '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
 
-  const modeClass = aiMode==="EXPLORE"?"exp":"expl";
-  const outcomeColor = aiOutcome==="success"?"#4caf50":
-                       aiOutcome==="partial"?"#ff9800":"#f44336";
+  if (atk.ai_actions_done && atk.ai_actions_done.length > 0) {
+    html += '<div class="actions-done"><div class="q-title" style="margin-top:10px">ACTIONS EXECUTED</div>';
+    atk.ai_actions_done.forEach(function(a) {
+      html += '<div class="action-item">&#x2705; ' + a + '</div>';
+    });
+    html += '</div>';
+  }
 
-  const qRows = Object.entries(qSnap).map(([act,val])=>{
-    const pct    = Math.round(val*100);
-    const isGood = aiActions.includes(act);
-    return `<div class="q-row">
-      <div class="q-name">${act}</div>
-      <div class="q-bg">
-        <div class="q-fill${isGood?" good":""}" style="width:${pct}%"></div>
-      </div>
-      <div class="q-val">${val.toFixed(3)}</div>
-    </div>`;
-  }).join("");
+  html += '<div class="q-title" style="margin-top:10px">Help the AI learn -- was this correct?</div>';
+  html += '<div class="fb-row">';
+  html += '<button class="fb-btn fb-yes" onclick="sendFeedback(1.0,\'' + (atk.pattern||'') + '\')">&#x2705; Correct -- reward AI</button>';
+  html += '<button class="fb-btn fb-no" onclick="sendFeedback(-1.0,\'' + (atk.pattern||'') + '\')">&#x274C; Wrong -- correct AI</button>';
+  html += '</div>';
 
-  const actHtml = (aiDone.length?aiDone:aiActions)
-    .map(a=>`<li>✅ ${a}</li>`).join("");
-
-  c.innerHTML=`
-    <div class="stitle">Q-Learning AI Decision</div>
-    <div class="ai-panel">
-      <div class="ai-title">🤖 What the RL AI decided and why</div>
-      <div class="ai-row">
-        <span class="k">Decision Mode</span>
-        <span class="v ${modeClass}">${aiMode}
-          ${aiMode==="EXPLORE"?"(trying new actions)":"(using best known)"}
-        </span>
-      </div>
-      <div class="ai-row">
-        <span class="k">Confidence</span>
-        <span class="v">${aiConf.toFixed(0)}%</span>
-      </div>
-      <div class="ai-row">
-        <span class="k">Episodes Learned</span>
-        <span class="v">${aiEp} attacks</span>
-      </div>
-      <div class="ai-row">
-        <span class="k">Explore Rate</span>
-        <span class="v ${modeClass}">${(aiExplore*100).toFixed(1)}%</span>
-      </div>
-      <div class="ai-row">
-        <span class="k">Outcome</span>
-        <span class="v" style="color:${outcomeColor}">
-          ${aiOutcome.toUpperCase()}
-        </span>
-      </div>
-
-      ${qRows?`<div class="q-label">Q-Values (AI learned values per action)</div>
-      ${qRows}
-      <div style="font-size:10px;color:#444;margin-top:4px">
-        Green = AI-chosen action • Blue = not chosen this time
-      </div>`:""}
-
-      <div class="q-label">Actions executed</div>
-      <ul class="act-list">${actHtml}</ul>
-
-      <div style="margin-top:10px;font-size:11px;color:#555">
-        Help the AI learn — was this correct?
-      </div>
-      <div class="fb-row">
-        <button class="fb-btn fb-yes"
-          onclick="sendFeedback(1.0,'${atk.pattern}')">
-          ✅ Correct — reward AI
-        </button>
-        <button class="fb-btn fb-no"
-          onclick="sendFeedback(-1.0,'${atk.pattern}')">
-          ❌ Wrong — correct AI
-        </button>
-      </div>
-    </div>`;
+  document.getElementById('content-ai').innerHTML = html;
 }
 
-// ── Tab: Forensics ────────────────────────────
-function fetchForensic() {
-  fetch("/api/forensic").then(r=>r.json()).then(data=>{
-    const el = document.getElementById("forensicList");
-    if (!data.files||!data.files.length) {
-      el.innerHTML=`<div class="empty">
-        <div class="ei">📁</div>
-        <div class="et">No forensic files yet</div>
-        <div style="font-size:11px;color:#333">
-          Run an Atomic Red Team test to generate evidence
-        </div>
-      </div>`;
-      return;
-    }
-
-    el.innerHTML = `
-      <p style="font-size:11px;color:#555;margin-bottom:12px">
-        ${data.total} evidence file(s) saved automatically
-        during attack detections
-      </p>` +
-    data.files.map(f=>`
-      <div class="forensic-card">
-        <div class="fc-top">
-          <div class="fc-attack">⚠ ${f.attack}</div>
-          <div class="fc-time">${f.captured}</div>
-        </div>
-        <div class="fc-meta">
-          <span>📊 ${f.log_count} events captured</span>
-          <span>💾 ${f.filesize}</span>
-        </div>
-        <div class="fc-logs">
-          ${f.logs.slice(0,3).map(l=>
-            `[${l.event_id}] ${l.event_label||"Event"} — ${l.time||""}`
-          ).join("<br>")}
-          ${f.log_count>3?`<br>... and ${f.log_count-3} more events`:""}
-        </div>
-        <button class="fc-btn"
-          onclick="showForensicDetail('${f.filename}')">
-          👁 View Full Evidence
-        </button>
-      </div>
-    `).join("");
-  });
-}
-
-function showForensicDetail(filename) {
-  alert(`Forensic file: ${filename}\n\nLocation:\ndataset/forensic/${filename}\n\nOpen this file with any text editor (Notepad, VS Code)\nto see all captured Windows Event Logs from the attack.`);
-}
-
-// ── Tab: Actions Log ──────────────────────────
-function fetchActions() {
-  fetch("/api/actions").then(r=>r.json()).then(data=>{
-    const el = document.getElementById("actionLogList");
-    if (!data.lines||!data.lines.length) {
-      el.innerHTML=`<div class="empty">
-        <div class="ei">📄</div>
-        <div class="et">No actions recorded yet</div>
-      </div>`;
-      return;
-    }
-
-    el.innerHTML = `
-      <p style="font-size:11px;color:#555;margin-bottom:12px">
-        ${data.total} total actions recorded
-        (showing last 50)
-      </p>` +
-    data.lines.map(line=>{
-      const isOk   = line.includes("[OK  ]");
-      const isFail = line.includes("[FAIL]");
-      const cls    = isOk?"action-ok":isFail?"action-fail":"";
-      const clean  = line.replace(/\n/,"").trim();
-      return `<div class="action-line ${cls}">${clean}</div>`;
-    }).join("");
-  });
-}
-
-// ── Tab switching ──────────────────────────────
-function switchTab(name) {
-  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
-  document.querySelectorAll(".tab-content").forEach(c=>c.classList.remove("active"));
-  document.getElementById("tab-"+name).classList.add("active");
-  document.getElementById("content-"+name).classList.add("active");
-
-  // Refresh data-heavy tabs
-  if (name==="forensic") fetchForensic();
-  if (name==="actions")  fetchActions();
-}
-
-// ── Feedback ──────────────────────────────────
 function sendFeedback(val, pattern) {
-  socket.emit("user_feedback", {feedback:val, pattern:pattern});
-  const msg = val>0
-    ? "✅ Positive feedback sent!\nRL AI will use these actions more."
-    : "❌ Negative feedback sent!\nRL AI will try different actions.";
-  alert(msg);
+  socket.emit('user_feedback', {feedback: val, attack_type: pattern});
+  alert('Feedback sent! AI will learn from this.');
 }
 
-// ── Filter + clear ────────────────────────────
-function filterLogs() { buildTable(allLogs); }
+function fetchActions() {
+  fetch('/api/actions').then(function(r){return r.json();}).then(function(data) {
+    var el = document.getElementById('actionsList');
+
+    /* FIXED: /api/actions returns {lines: [...], total: N} — an
+       object, not a raw array. This code used to treat `data`
+       itself as the array (data.length, data.slice, ...), which
+       was always undefined on an object, so it silently fell
+       through to "no actions yet" every time even when the log
+       file had real entries. Now it reads data.lines correctly. */
+    var lines = (data && data.lines) ? data.lines : [];
+
+    if (!lines || lines.length === 0) {
+      el.innerHTML = '<div class="empty"><div class="ei">&#x1F4CB;</div><div class="et">No actions yet</div></div>';
+      return;
+    }
+    var total = data.total || lines.length;
+    var html = '<div style="font-size:11px;color:#8890a8;margin-bottom:8px">' + total + ' total actions recorded (showing last ' + lines.length + ')</div>';
+    lines.forEach(function(line) {
+      var cls = line.indexOf('[OK') !== -1 ? 'al-ok' : 'al-fail';
+      html += '<div class="action-log-item ' + cls + '">' + line.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>';
+    });
+    el.innerHTML = html;
+  }).catch(function(err){ console.log('fetchActions error', err); });
+}
+
+function switchTab(name) {
+  lastTab = name;
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+  var btn = document.getElementById('tab-' + name);
+  var cnt = document.getElementById('content-' + name);
+  if (btn) btn.classList.add('active');
+  if (cnt) cnt.classList.add('active');
+  if (name === 'actions') fetchActions();
+}
+
+function switchTabNoScroll(name) {
+  switchTab(name);
+}
+
+function filterLogs() {
+  var f = document.getElementById('filterInput').value.toLowerCase();
+  document.querySelectorAll('#logBody tr').forEach(function(tr) {
+    tr.style.display = tr.textContent.toLowerCase().includes(f) ? '' : 'none';
+  });
+}
 
 function clearLogs() {
-  document.getElementById("logBody").innerHTML=
-    '<tr><td colspan="7" class="waiting">Cleared. Click Scan Now.</td></tr>';
-  document.getElementById("content-overview").innerHTML=
-    '<div class="empty"><div class="ei">🔍</div><div class="et">Click Scan Now</div></div>';
+  document.getElementById('logBody').innerHTML =
+    '<tr><td colspan="7" style="text-align:center;color:#2a2a4a;padding:30px">Cleared. Click Scan Now to refresh.</td></tr>';
+  document.getElementById('content-overview').innerHTML =
+    '<div class="empty"><div class="ei">&#x1F50D;</div><div class="et">Click Scan Now to load data</div></div>';
 }
 
 function triggerScan() {
-  setStatus("SCANNING");
-  socket.emit("manual_scan");
-  setTimeout(fetchAll, 1500);
+  setStatus('SCANNING');
+  socket.emit('manual_scan');
+  fetch('/api/state').then(function(r){return r.json();}).then(updateDashboard);
 }
 
-// Auto-refresh every 15 seconds
-setInterval(fetchAll, 15000);
+setInterval(function() {
+  fetch('/api/state').then(function(r){return r.json();}).then(updateDashboard);
+}, 5000);
+
+fetch('/api/state').then(function(r){return r.json();}).then(updateDashboard);
 </script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+quarantine/
+node_modules/
+.DS_Store
+Thumbs.db

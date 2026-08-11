@@ -1,14 +1,20 @@
 import win32evtlog
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 from colorama import Fore, Style, init
 init(autoreset=True)
 
 # ═══════════════════════════════════════════════════════
-# CyberSage 2.0 — Live Log Monitor v4
-# FIXED: Removed 4656 and 5156 from suspicious IDs
-# These cause false positive credential dumping alerts
-# Now reads BOTH Security AND System logs
+# CyberSage 2.0 — Live Log Monitor v6
+# FIXED: Time-windowed reading — events older than
+# `minutes_back` are now automatically excluded, regardless
+# of log volume. Previously read by fixed count only, which
+# let hours-old stale events (e.g. leftover 7045 entries from
+# earlier test runs) linger in every scan until enough new
+# log volume pushed them out. Now each event's timestamp is
+# checked against a cutoff, and since ReadEventLog returns
+# newest-first, reading stops the moment a stale event is hit.
+# Reads BOTH Security AND System logs.
 # ═══════════════════════════════════════════════════════
 
 SECURITY_CATALOG = {
@@ -72,6 +78,11 @@ SUSPICIOUS_SECURITY = {
 
 SUSPICIOUS_SYSTEM = {7045, 4697}
 
+# How far back (in minutes) any single scan will look.
+# 30s scan interval -> 10 minutes gives generous overlap
+# between scans without letting hours-old events linger.
+DEFAULT_MINUTES_BACK = 10
+
 
 def extract_security_details(event):
     d = {"source_ip": None, "target_account": None,
@@ -132,20 +143,48 @@ def extract_system_details(event):
     return d
 
 
-def read_log(log_type, catalog, suspicious_ids, max_events, extractor):
+def read_log(log_type, catalog, suspicious_ids, max_events, extractor,
+             minutes_back=DEFAULT_MINUTES_BACK):
+    """
+    Reads events from `log_type`, stopping at whichever comes first:
+    - `max_events` events read (safety/perf cap), or
+    - an event older than `minutes_back` minutes is encountered.
+
+    Since EVENTLOG_BACKWARDS_READ returns newest-first, once we hit
+    an event older than the cutoff we know everything after it is
+    even older, so we can stop reading entirely instead of continuing
+    to scan the rest of the log.
+    """
     rows = []
+    cutoff_time = datetime.now() - timedelta(minutes=minutes_back)
     try:
         hand  = win32evtlog.OpenEventLog(None, log_type)
         flags = (win32evtlog.EVENTLOG_BACKWARDS_READ |
                  win32evtlog.EVENTLOG_SEQUENTIAL_READ)
         count = 0
-        while count < max_events:
+        stop_reading = False
+        while count < max_events and not stop_reading:
             batch = win32evtlog.ReadEventLog(hand, flags, 0)
             if not batch:
                 break
             for ev in batch:
                 if count >= max_events:
                     break
+
+                # Convert pywintypes datetime to plain datetime for comparison
+                et = ev.TimeGenerated
+                try:
+                    event_time = datetime(
+                        et.year, et.month, et.day,
+                        et.hour, et.minute, et.second
+                    )
+                except Exception:
+                    event_time = None
+
+                if event_time is not None and event_time < cutoff_time:
+                    stop_reading = True
+                    break
+
                 eid = ev.EventID & 0xFFFF
                 det = extractor(ev)
                 rows.append({
@@ -166,27 +205,30 @@ def read_log(log_type, catalog, suspicious_ids, max_events, extractor):
     return rows
 
 
-def read_windows_logs(log_type="Security", max_events=1000):
+def read_windows_logs(log_type="Security", max_events=1000,
+                       minutes_back=DEFAULT_MINUTES_BACK):
     print(f"\n{Fore.CYAN}{'─'*56}")
     print(f"  🛡️  CyberSage 2.0 — Live Log Monitor")
     print(f"{'─'*56}{Style.RESET_ALL}")
 
     all_rows = []
 
-    # Security log (800 events)
+    # Security log — capped at max_events*0.8, but now ALSO
+    # time-windowed so stale events can't linger regardless
+    # of how high max_events is set.
     sec_events = int(max_events * 0.8)
-    print(f"  📂 Security log : reading last {sec_events}")
+    print(f"  📂 Security log : reading last {sec_events} (≤{minutes_back} min)")
     sec_rows = read_log("Security", SECURITY_CATALOG,
                         SUSPICIOUS_SECURITY, sec_events,
-                        extract_security_details)
+                        extract_security_details, minutes_back)
     all_rows.extend(sec_rows)
 
-    # System log (200 events) — for Event 7045
+    # System log — for Event 7045, same time-windowed logic
     sys_events = int(max_events * 0.2)
-    print(f"  📂 System log   : reading last {sys_events}")
+    print(f"  📂 System log   : reading last {sys_events} (≤{minutes_back} min)")
     sys_rows = read_log("System", SYSTEM_CATALOG,
                         SUSPICIOUS_SYSTEM, sys_events,
-                        extract_system_details)
+                        extract_system_details, minutes_back)
     all_rows.extend(sys_rows)
 
     if not all_rows:

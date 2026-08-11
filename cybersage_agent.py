@@ -190,7 +190,7 @@ def background_scan(tray_icon):
             tray_icon.icon  = make_shield("orange")
             tray_icon.title = "CyberSage — Scanning..."
 
-            state = run_pipeline(max_events=500)
+            state = run_pipeline(max_events=4000)
             agent["scan_count"] += 1
 
             if state and state.get("attacks"):
@@ -235,7 +235,7 @@ def background_scan(tray_icon):
 def scan_once(tray_icon):
     try:
         tray_icon.icon  = make_shield("orange")
-        state = run_pipeline(max_events=500)
+        state = run_pipeline(max_events=4000)
         if state and state.get("attacks"):
             attacks    = state["attacks"]
             risk_score = state.get("risk_score", 0)

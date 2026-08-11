@@ -1,0 +1,706 @@
+{
+  "attack": "PORT_SCAN",
+  "captured": "20260802_221516",
+  "logs": [
+    {
+      "event_id": 4798,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4658,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4658,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4798,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "User Local Group Membership Enumerated",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4658,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4658,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5152,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5152,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:10 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:10 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:10 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:07 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:07 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:07 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:07 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:06 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:04 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:04 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:03 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:03 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:15:02 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5152,
+      "time": "Sun Aug  2 22:15:01 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5152,
+      "time": "Sun Aug  2 22:15:01 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:01 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:15:01 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5152,
+      "time": "Sun Aug  2 22:15:00 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:14:59 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:14:59 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:14:59 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:14:59 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5156,
+      "time": "Sun Aug  2 22:14:59 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:14:59 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:14:59 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5158,
+      "time": "Sun Aug  2 22:14:59 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 5152,
+      "time": "Sun Aug  2 22:14:59 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "None"
+    },
+    {
+      "event_id": 4656,
+      "time": "Sun Aug  2 22:14:58 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "None"
+    }
+  ]
+}

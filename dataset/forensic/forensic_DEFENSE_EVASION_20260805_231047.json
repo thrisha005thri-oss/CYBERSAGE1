@@ -1,0 +1,706 @@
+{
+  "attack": "DEFENSE_EVASION",
+  "captured": "20260805_231047",
+  "logs": [
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:21 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:21 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:20 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:20 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5156,
+      "time": "Wed Aug  5 23:10:20 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:20 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5152,
+      "time": "Wed Aug  5 23:10:20 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5152,
+      "time": "Wed Aug  5 23:10:20 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:19 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:19 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:19 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:19 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:18 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:18 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5156,
+      "time": "Wed Aug  5 23:10:17 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Wed Aug  5 23:10:17 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:17 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:17 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:17 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:17 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:16 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:16 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5152,
+      "time": "Wed Aug  5 23:10:16 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4658,
+      "time": "Wed Aug  5 23:10:15 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Wed Aug  5 23:10:15 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4658,
+      "time": "Wed Aug  5 23:10:15 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4690,
+      "time": "Wed Aug  5 23:10:15 2026",
+      "event_label": "Event 4690",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:15 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:14 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:14 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:14 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:13 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:13 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:12 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5156,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:11 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4656,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:10 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5156,
+      "time": "Wed Aug  5 23:10:09 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:09 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:09 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5156,
+      "time": "Wed Aug  5 23:10:09 2026",
+      "event_label": "Network Connection Allowed",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:09 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:09 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4658,
+      "time": "Wed Aug  5 23:10:08 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4656,
+      "time": "Wed Aug  5 23:10:08 2026",
+      "event_label": "Object Handle Requested",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4658,
+      "time": "Wed Aug  5 23:10:08 2026",
+      "event_label": "Event 4658",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4690,
+      "time": "Wed Aug  5 23:10:08 2026",
+      "event_label": "Event 4690",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:08 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:08 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:07 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:07 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:07 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:07 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5152,
+      "time": "Wed Aug  5 23:10:07 2026",
+      "event_label": "Event 5152",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:06 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:06 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:05 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:05 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "HP$"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 5158,
+      "time": "Wed Aug  5 23:10:05 2026",
+      "event_label": "Event 5158",
+      "source_ip": "None",
+      "account": "nan"
+    },
+    {
+      "event_id": 4688,
+      "time": "Wed Aug  5 23:10:04 2026",
+      "event_label": "New Process Created",
+      "source_ip": "None",
+      "account": "Thrisha"
+    }
+  ]
+}

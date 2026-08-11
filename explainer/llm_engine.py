@@ -4,156 +4,151 @@ from colorama import Fore, Style, init
 init(autoreset=True)
 
 # ═══════════════════════════════════════════════════════════════
-# CyberSage 2.0 — LLM Engine
-# Groq LLaMA for plain English explanation ONLY
-# Fixed: reads .env correctly, shows on dashboard
+# CyberSage — LLM Engine
+# Primary: Groq LLaMA 3.3 (free + fast)
+# Fallback: Google Gemini (free + reliable)
+# Always works — never blocks network!
 # ═══════════════════════════════════════════════════════════════
 
-GROQ_URL   = "https://api.groq.com/openai/v1/chat/completions"
-GROQ_MODEL = "llama-3.3-70b-versatile"
+GROQ_URL    = "https://api.groq.com/openai/v1/chat/completions"
+GROQ_MODEL  = "llama-3.3-70b-versatile"
+GEMINI_URL  = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
 
 
-def _get_key():
-    """Load Groq API key from .env file"""
+def _get_env(key):
     try:
         env_path = os.path.join(
             os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
             ".env"
         )
         if os.path.exists(env_path):
-            with open(env_path, "r") as f:
+            with open(env_path) as f:
                 for line in f:
                     line = line.strip()
-                    if line.startswith("GROQ_API_KEY="):
-                        key = line.split("=", 1)[1].strip()
-                        if key and key != "your_key_here":
-                            return key
-    except Exception as e:
-        print(f"  env read error: {e}")
-    return os.environ.get("GROQ_API_KEY", "")
+                    if line.startswith(f"{key}="):
+                        val = line.split("=", 1)[1].strip()
+                        if val and val != "your_key_here":
+                            return val
+    except:
+        pass
+    return os.environ.get(key, "")
 
 
-def explain_attack(attack, audience="normal"):
-    """
-    Generate plain English explanation using Groq LLaMA.
-    Falls back to built-in explanation if API unavailable.
-    """
-    pattern     = attack.get("pattern", "UNKNOWN")
-    name        = attack.get("name", pattern)
-    mitre_id    = attack.get("mitre_id", "")
-    risk        = attack.get("risk", 0)
-    count       = attack.get("count", 0)
-    attacker_ip = attack.get("attacker_ip", "unknown")
-    account     = attack.get("target_account", "unknown")
-    plain       = attack.get("plain_english", "")
+def _build_prompt(attack, count):
+    name    = attack.get("name", "Unknown Attack")
+    mitre   = attack.get("mitre_id", "")
+    risk    = attack.get("risk", 0)
+    tactic  = attack.get("mitre_tactic", "")
+    ip      = attack.get("attacker_ip", "unknown")
+    acct    = attack.get("target_account", "unknown")
 
-    # Try Groq API first
-    key = _get_key()
-    if key:
-        try:
-            prompt = (
-                f"You are CyberSage, an AI security assistant.\n"
-                f"Explain this cyberattack to a NON-TECHNICAL person "
-                f"in 3 sentences. Use simple words. No jargon. Be calm.\n\n"
-                f"Attack: {name}\n"
-                f"MITRE: {mitre_id}\n"
-                f"Risk: {risk}/100\n"
-                f"Events detected: {count}\n"
-                f"Attacker IP: {attacker_ip}\n"
-                f"Target account: {account}\n\n"
-                f"Explain: what attacker tried, why dangerous, "
-                f"that CyberSage blocked it. Under 70 words."
-            )
+    return (
+        f"You are CyberSage, an AI cybersecurity assistant. "
+        f"Explain this Windows cyberattack to a NON-TECHNICAL person "
+        f"in 3-4 simple sentences. No jargon. Be clear and calm.\n\n"
+        f"Attack: {name}\n"
+        f"MITRE Technique: {mitre} — {tactic}\n"
+        f"Risk Level: {risk}/100\n"
+        f"Events detected: {count}\n"
+        f"Attacker IP: {ip}\n"
+        f"Target: {acct}\n\n"
+        f"Explain: (1) what the attacker tried to do, "
+        f"(2) why it is dangerous, "
+        f"(3) that CyberSage automatically blocked and fixed it. "
+        f"Keep under 80 words."
+    )
 
-            headers = {
+
+def _try_groq(prompt):
+    key = _get_env("GROQ_API_KEY")
+    if not key:
+        return None
+    try:
+        resp = requests.post(
+            GROQ_URL,
+            headers={
                 "Authorization": f"Bearer {key}",
-                "Content-Type" : "application/json",
-            }
-            payload = {
+                "Content-Type" : "application/json"
+            },
+            json={
                 "model"      : GROQ_MODEL,
                 "messages"   : [{"role": "user", "content": prompt}],
                 "max_tokens" : 200,
                 "temperature": 0.4,
-            }
+            },
+            timeout=8
+        )
+        if resp.status_code == 200:
+            text = resp.json()["choices"][0]["message"]["content"].strip()
+            print(f"  {Fore.GREEN}✅ Groq explanation ready{Style.RESET_ALL}")
+            return text
+        else:
+            print(f"  {Fore.YELLOW}⚠️  Groq error {resp.status_code}{Style.RESET_ALL}")
+    except Exception as e:
+        print(f"  {Fore.YELLOW}⚠️  Groq unavailable: {e}{Style.RESET_ALL}")
+    return None
 
-            resp = requests.post(
-                GROQ_URL,
-                headers=headers,
-                json=payload,
-                timeout=10
-            )
 
-            if resp.status_code == 200:
-                data        = resp.json()
-                explanation = data["choices"][0]["message"]["content"].strip()
-                print(f"  {Fore.GREEN}✅ Groq explanation ready{Style.RESET_ALL}")
-                return explanation
-            else:
-                print(f"  {Fore.YELLOW}⚠️  Groq API error "
-                      f"{resp.status_code}{Style.RESET_ALL}")
+def _try_gemini(prompt):
+    key = _get_env("GEMINI_API_KEY")
+    if not key:
+        return None
+    try:
+        resp = requests.post(
+            f"{GEMINI_URL}?key={key}",
+            headers={"Content-Type": "application/json"},
+            json={"contents": [{"parts": [{"text": prompt}]}]},
+            timeout=8
+        )
+        if resp.status_code == 200:
+            text = resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
+            print(f"  {Fore.GREEN}✅ Gemini explanation ready{Style.RESET_ALL}")
+            return text
+        print(f"  {Fore.YELLOW}⚠️  Gemini error {resp.status_code}{Style.RESET_ALL}")
+    except Exception as e:
+        print(f"  {Fore.YELLOW}⚠️  Gemini unavailable: {e}{Style.RESET_ALL}")
+    return None
 
-        except Exception as e:
-            print(f"  {Fore.YELLOW}⚠️  Groq error: {e}{Style.RESET_ALL}")
-    else:
-        print(f"  {Fore.YELLOW}⚠️  No Groq key — "
-              f"using built-in explanation{Style.RESET_ALL}")
 
-    # Fallback to built-in explanation
+def _fallback(attack):
+    """Built-in explanations when both APIs unavailable"""
+    fallbacks = {
+        "NEW_ADMIN_USER"  : "An attacker created a secret administrator account to maintain hidden access to your system. This lets them log in anytime even after you think they're gone. CyberSage detected and permanently deleted this backdoor account.",
+        "SCHEDULED_TASK"  : "A malicious scheduled task was created to run harmful code automatically at set times — even after reboot. Attackers use this to keep their code running without staying connected. CyberSage deleted the task and removed all associated files.",
+        "NEW_SERVICE"     : "A new Windows service was installed to run malicious code with the highest system privileges at every startup. CyberSage stopped, disabled, and permanently deleted this service before it could cause further damage.",
+        "DEFENSE_EVASION" : "The Windows Security log was deliberately cleared to destroy evidence of the attack. This is a critical sign of an active intruder covering their tracks. CyberSage immediately restored audit logging and increased log protection.",
+        "BRUTE_FORCE"     : "Someone rapidly tried many passwords on your account — like a thief testing every key on a keychain. CyberSage blocked the attacker's IP, locked the targeted account, and enabled lockout policies to prevent future attempts.",
+        "PORT_SCAN"       : "An attacker scanned your system looking for open ports and vulnerabilities — the first step before a real attack. CyberSage blocked the scanner immediately and enabled stealth mode to hide your system's ports.",
+        "FILELESS_MALWARE": "Malicious code ran entirely in memory, leaving no file for antivirus to find. This bypasses traditional security tools. CyberSage caught it through behavioral monitoring, killed the process, and restricted PowerShell to prevent recurrence.",
+        "AI_PHISHING"     : "An AI-generated phishing attack was detected attempting to steal credentials through a convincing fake message. CyberSage quarantined the suspicious content and blocked the sender domain to prevent further attempts.",
+    }
+    pattern = attack.get("pattern", "")
+    return fallbacks.get(
+        pattern,
+        f"A cyberattack was detected: {attack.get('name', 'Unknown')}. "
+        f"Risk level: {attack.get('risk', 0)}/100. "
+        f"CyberSage automatically blocked the attack, "
+        f"executed deep remediation, and preserved forensic evidence."
+    )
+
+
+def explain_attack(attack, audience="normal"):
+    count  = attack.get("count", 0)
+    prompt = _build_prompt(attack, count)
+
+    # Try Groq first
+    result = _try_groq(prompt)
+    if result:
+        return result
+
+    # Try Gemini as fallback
+    result = _try_gemini(prompt)
+    if result:
+        return result
+
+    # Use built-in fallback
+    print(f"  {Fore.CYAN}ℹ️  Using built-in explanation{Style.RESET_ALL}")
+    plain = attack.get("plain_english", "")
     if plain:
         return plain.replace("{count}", str(count))
-
-    return _fallback(name, risk, count)
-
-
-def _fallback(name, risk, count):
-    """Built-in plain English explanations"""
-    fallbacks = {
-        "Brute Force Login Attack": (
-            f"Someone rapidly tried {count} wrong passwords on your account. "
-            "Like a thief trying every key on a keychain. "
-            "CyberSage blocked the attacker and locked the account automatically."
-        ),
-        "Backdoor Admin Account Created": (
-            "An attacker created a secret admin account to maintain access "
-            "even if detected. This is one of the most dangerous persistence "
-            "techniques. CyberSage disabled the account and saved forensic evidence."
-        ),
-        "Scheduled Task Persistence": (
-            "A scheduled task was created to run malicious code automatically "
-            "at set times even after every reboot. Attackers use this to stay "
-            "on your system. CyberSage flagged it and created a system snapshot."
-        ),
-        "Malicious Service Installation": (
-            "A new Windows service was installed that could run malicious "
-            "code with high system privileges. "
-            "CyberSage stopped the service and preserved forensic evidence."
-        ),
-        "Registry Run Key Persistence": (
-            "A program was added to Windows startup registry so it runs "
-            "automatically every time Windows boots. "
-            "CyberSage captured forensic evidence of this persistence attempt."
-        ),
-        "Defense Evasion": (
-            "The Windows Security Event Log was deliberately cleared to "
-            "destroy evidence of the attack. This is a CRITICAL sign of "
-            "active intrusion. CyberSage isolated the system and preserved evidence."
-        ),
-        "Credential Dumping": (
-            "An attacker tried to access Windows memory where all passwords "
-            "are stored. If successful they could steal every account credential. "
-            "CyberSage blocked the access and saved forensic evidence."
-        ),
-        "Port Scan Detected": (
-            "Someone scanned your system to find open ports and vulnerabilities. "
-            "This is usually the first step of a larger attack. "
-            "CyberSage blocked the scanner IP in the firewall."
-        ),
-    }
-
-    return fallbacks.get(
-        name,
-        f"A suspicious security event was detected: {name}. "
-        f"Risk level: {risk}/100. "
-        "CyberSage automatically took protective action "
-        "and preserved forensic evidence for investigation."
-    )
+    return _fallback(attack)
